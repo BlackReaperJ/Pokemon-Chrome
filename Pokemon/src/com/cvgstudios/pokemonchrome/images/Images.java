@@ -39,7 +39,7 @@ public enum Images implements ImgPathConstants {
 
 	// Player sprites
 
-	PlayerDown("Pictures/Sprites/Player/"), PlayerDown1(
+	PlayerDown("Pictures/Sprites/Player/Down.png"), PlayerDown1(
 			"Pictures/Sprites/Player/Down1.png"), PlayerDown2(
 			"Pictures/Sprites/Player/Down2.png"), PlayerLeft(
 			"Pictures/Sprites/Player/Left.png"), PlayerLeft1(
