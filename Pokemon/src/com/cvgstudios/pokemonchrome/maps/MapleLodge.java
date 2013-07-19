@@ -1,49 +1,25 @@
 package com.cvgstudios.pokemonchrome.maps;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+
+import java.awt.*;
+import java.net.URL;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.net.URL;
+import java.io.*;
 
-import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import com.cvgstudios.pokemonchrome.GameFile;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import com.cvgstudios.pokemonchrome.images.*;
+import com.cvgstudios.pokemonchrome.*;
 
 public class MapleLodge extends JFrame implements ActionListener {
-	ClassLoader cl = MapleLodge.class.getClassLoader();
-	URL imageURL = cl.getResource("Pictures/Maps/MapleLodge.png"),
-			imageURL2 = cl.getResource("Pictures/Sprites/Player/Down.png"),
-			imageURL3 = cl.getResource("Pictures/Sprites/Player/Down1.png"),
-			imageURL4 = cl.getResource("Pictures/Sprites/Player/Down2.png"),
-			imageURL5 = cl.getResource("Pictures/Sprites/Player/Left.png"),
-			imageURL6 = cl.getResource("Pictures/Sprites/Player/Left1.png"),
-			imageURL7 = cl.getResource("Pictures/Sprites/Player/Left2.png"),
-			imageURL8 = cl.getResource("Pictures/Sprites/Player/Right.png"),
-			imageURL9 = cl.getResource("Pictures/Sprites/Player/Right1.png"),
-			imageURL10 = cl.getResource("Pictures/Sprites/Player/Right2.png"),
-			imageURL11 = cl.getResource("Pictures/Sprites/Player/Up.png"),
-			imageURL12 = cl.getResource("Pictures/Sprites/Player/Up1.png"),
-			imageURL13 = cl.getResource("Pictures/Sprites/Player/Up2.png"),
-			imageURL14 = cl
-					.getResource("Pictures/Sprites/Structures/ColumnTrees.png"),
-			imageURL15 = cl.getResource("Pictures/Maps/Route1.png"),
-			imageURL16 = cl
-					.getResource("Pictures/Sprites/Structures/Fountain1.png"),
-			imageURL17 = cl
-					.getResource("Pictures/Sprites/Structures/Fountain2.png"),
-			imageURL18 = cl
-					.getResource("Pictures/Sprites/Structures/FountainBase.png"),
-			imageURL19 = cl.getResource("Pictures/Maps/Route2.png");
-
+	
+	boolean TEMPVARIABLEFORENCOUNTERS = false;
+	
+	
 	final long KEYDELAY = 1000000;
 	long lSystime;
 	long lTimeL;
@@ -66,31 +42,33 @@ public class MapleLodge extends JFrame implements ActionListener {
 	Font dFont = Font.createFont(Font.TRUETYPE_FONT, in);
 	Font f1 = dFont.deriveFont(40f), f2 = dFont.deriveFont(50f);
 
+
 	public static void main(String[] args) throws Exception {
 		MapleLodge mainMenu = new MapleLodge();
+		GameFile.iLocX = 240;
 	}
 
 	public MapleLodge() throws Exception {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		mapleLodge = toolkit.createImage(imageURL);
-		down = toolkit.createImage(imageURL2);
-		down1 = toolkit.createImage(imageURL3);
-		down2 = toolkit.createImage(imageURL4);
-		left = toolkit.createImage(imageURL5);
-		left1 = toolkit.createImage(imageURL6);
-		left2 = toolkit.createImage(imageURL7);
-		right = toolkit.createImage(imageURL8);
-		right1 = toolkit.createImage(imageURL9);
-		right2 = toolkit.createImage(imageURL10);
-		up = toolkit.createImage(imageURL11);
-		up1 = toolkit.createImage(imageURL12);
-		up2 = toolkit.createImage(imageURL13);
-		columnTrees = toolkit.createImage(imageURL14);
-		route1 = toolkit.createImage(imageURL15);
-		fountain1 = toolkit.createImage(imageURL16);
-		fountain2 = toolkit.createImage(imageURL17);
-		fountainBase = toolkit.createImage(imageURL18);
-		route2 = toolkit.createImage(imageURL19);
+		mapleLodge = Images.MapleLodge.getImage();
+		down = Images.PlayerDown.getImage();
+		down1 = Images.PlayerDown1.getImage();
+		down2 = Images.PlayerDown2.getImage();
+		left = Images.PlayerLeft.getImage();
+		left1 = Images.PlayerLeft1.getImage();
+		left2 = Images.PlayerLeft2.getImage();
+		right = Images.PlayerRight.getImage();
+		right1 = Images.PlayerRight1.getImage();
+		right2  = Images.PlayerRight2.getImage();
+		up = Images.PlayerUp.getImage();
+		up1 = Images.PlayerUp1.getImage();
+		up2 = Images.PlayerUp2.getImage();
+		columnTrees = Images.ColumnTrees.getImage();
+		route1 = Images.Route1.getImage();
+		fountain1 = Images.NatalieHead.getImage();
+		fountain2 = Images.NatalieHead.getImage();
+		fountainBase = Images.Natalie.getImage();
+		route2 = Images.Route2.getImage();
 
 		addKeyListener(new AL());
 		setTitle("Pokemon Chrome");// Sets the Title
@@ -100,6 +78,11 @@ public class MapleLodge extends JFrame implements ActionListener {
 		setBackground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// new musicPlayPoke("Music/NimbasaCity.wav").start();
+		
+		
+		Boundaries.initializeBoundaries();
+		
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -117,7 +100,15 @@ public class MapleLodge extends JFrame implements ActionListener {
 			long nanoTime = System.nanoTime();
 			if (keyCode == e.VK_LEFT && nanoTime - lTimeU > KEYDELAY
 					&& nanoTime - lTimeD > KEYDELAY) {// moves object left
-				GameFile.iLocX = GameFile.iLocX + 8;
+
+				if (BoundaryBox.isMovePossible(GameFile.iLocX, GameFile.iLocY,
+						Direction.LEFT, Boundaries.getBoxes())) {
+					GameFile.iLocX = GameFile.iLocX + 8;
+				}
+				
+				
+				TEMPVARIABLEFORENCOUNTERS = BoundaryBox.isEncountering();
+
 				upStep = -1;
 				downStep = -1;
 				rightStep = -1;
@@ -125,7 +116,13 @@ public class MapleLodge extends JFrame implements ActionListener {
 				lTimeL = nanoTime;
 			} else if (keyCode == e.VK_RIGHT && nanoTime - lTimeU > KEYDELAY
 					&& nanoTime - lTimeD > KEYDELAY) {// moves object right
-				GameFile.iLocX = GameFile.iLocX - 8;
+				if (BoundaryBox.isMovePossible(GameFile.iLocX, GameFile.iLocY,
+						Direction.RIGHT, Boundaries.getBoxes())) {
+					GameFile.iLocX = GameFile.iLocX - 8;
+				}
+				
+				TEMPVARIABLEFORENCOUNTERS = BoundaryBox.isEncountering();
+				
 				upStep = -1;
 				leftStep = -1;
 				downStep = -1;
@@ -133,7 +130,13 @@ public class MapleLodge extends JFrame implements ActionListener {
 				lTimeR = nanoTime;
 			} else if (keyCode == e.VK_UP && nanoTime - lTimeL > KEYDELAY
 					&& nanoTime - lTimeR > KEYDELAY) {// moves object up
-				GameFile.iLocY = GameFile.iLocY + 8;
+				if (BoundaryBox.isMovePossible(GameFile.iLocX, GameFile.iLocY,
+						Direction.UP, Boundaries.getBoxes())) {
+					GameFile.iLocY = GameFile.iLocY + 8;
+					
+					TEMPVARIABLEFORENCOUNTERS = BoundaryBox.isEncountering();
+					
+				}
 				leftStep = -1;
 				downStep = -1;
 				rightStep = -1;
@@ -141,7 +144,13 @@ public class MapleLodge extends JFrame implements ActionListener {
 				lTimeU = nanoTime;
 			} else if (keyCode == e.VK_DOWN && nanoTime - lTimeL > KEYDELAY
 					&& nanoTime - lTimeR > KEYDELAY) {// moves object down
-				GameFile.iLocY = GameFile.iLocY - 8;
+				if (BoundaryBox.isMovePossible(GameFile.iLocX, GameFile.iLocY, Direction.DOWN, Boundaries.getBoxes())) {
+					GameFile.iLocY = GameFile.iLocY - 8;
+				}
+				
+				
+				TEMPVARIABLEFORENCOUNTERS = BoundaryBox.isEncountering();
+				
 				upStep = -1;
 				leftStep = -1;
 				rightStep = -1;
@@ -228,7 +237,7 @@ public class MapleLodge extends JFrame implements ActionListener {
 			}
 		}
 		g.drawString(GameFile.iLocX + "  " + GameFile.iLocY + "  " + mapChange
-				+ "  ", 250, 300);
+				+ "  " + (TEMPVARIABLEFORENCOUNTERS ? "YOU HAVE FOUND WILD POKEMONS OMGOMGOMGOMG" : "No Pokemon"), 250, 300);
 
 		// Graphics2D g2 = (Graphics2D)g;
 		// for(int GameFile.iLocX=0;GameFile.iLocX<=600;GameFile.iLocX+=25){
@@ -241,5 +250,50 @@ public class MapleLodge extends JFrame implements ActionListener {
 		// }
 		repaint();
 	}
-
+	
+	
+	enum Boundaries{
+		
+		RightFenceLodge(new BoundaryBox(0, -24, 40, 840)),
+		LeftFenceLodge(new BoundaryBox(984, 936, 1808, -152)),
+		TopFenceLodge(new BoundaryBox(0, 864, 792, 840)),
+		BottomFenceLodge(new BoundaryBox(-144, 976, -112, -152)),
+		
+		LeftArmPokelab(new BoundaryBox(664, 552, 576, 784)),
+		
+		RidgeTest(new BoundaryBox(632, 600, 1232, 848, Direction.LEFT)),
+		
+		GrassTest(new BoundaryBox(-400, -512, -408, -328, 0.05f)),
+		
+		;
+		
+		BoundaryBox theBoundary;
+		static BoundaryBox[] theBoxes;
+		
+		
+		private Boundaries(BoundaryBox theBox){
+			theBoundary = theBox;
+		}
+		
+		public BoundaryBox getBox(){
+			return theBoundary;
+		}
+		
+		public static void initializeBoundaries(){
+			Boundaries[] theBoundaries = Boundaries.values();
+			
+			theBoxes = new BoundaryBox[theBoundaries.length];
+			
+			for (int i = 0; i < theBoundaries.length; i ++){
+				theBoxes[i] = theBoundaries[i].getBox();
+			}
+		}
+		
+		public static BoundaryBox[] getBoxes(){
+			return theBoxes;
+		}
+		
+	}
+	
 }
+
