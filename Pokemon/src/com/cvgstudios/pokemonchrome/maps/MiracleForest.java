@@ -36,7 +36,7 @@ public class MiracleForest extends JFrame implements ActionListener {
 	Image miracleForest1, down, down1, down2, left, left1, left2, right,
 			right1, right2, up, up1, up2, greenColumnTrees, greenColumnTrees2,
 			forestEntrance, greenTreeOverlay, leftEntrance, rightEntrance,
-			greenColumnTrees3, miracleForest2;
+			greenColumnTrees3, miracleForest2, miracleForest4;
 
 	File f = new File("PokemonFont.ttf");
 	FileInputStream in = new FileInputStream(f);
@@ -70,7 +70,8 @@ public class MiracleForest extends JFrame implements ActionListener {
 		leftEntrance = Images.LeftEntrance.getImage();
 		rightEntrance = Images.RightEntrance.getImage();
 		miracleForest2 = Images.MiracleForest2.getImage();
-
+		miracleForest4 = Images.MiracleForest4.getImage();
+		
 		addKeyListener(new AL());
 		setTitle("Pokemon Chrome");// Sets the Title
 		setSize(600, 600);// Size of Window

@@ -85,7 +85,10 @@ public enum Images implements ImgPathConstants {
 			"Pictures/Maps/House1Top.png"), House1Bot(
 			"Pictures/Maps/House1Bot.png"), MiracleForest1(
 			"Pictures/Maps/MiracleForest1.png"), MiracleForest2(
-			"Pictures/Maps/MiracleForest2.png"),
+			"Pictures/Maps/MiracleForest2.png"),MapleLodge(
+			"Pictures/Maps/MapleLodge.png"),Route2(
+			"Pictures/Maps/Route2.png"), MiracleForest4(
+			"Pictures/Maps/MiracleForest4.png"),
 
 	// Map decorations (the stuff you code on top of the map!)
 	House1Overlay("Pictures/Sprites/Structures/House1Overlay.png"), House2Overlay(
@@ -160,7 +163,7 @@ public enum Images implements ImgPathConstants {
 
 	Outline1(MENU_BATTLE_PATH + "/Outline1.png"), Outline2(MENU_BATTLE_PATH
 			+ "/Outline2.png"), Outline3(MENU_BATTLE_PATH + "/Outline3.png"), Outline4(
-			MENU_BATTLE_PATH + "/Outline4.png");
+			MENU_BATTLE_PATH + "/Outline4.png"),
 
 	private String filePath;
 	private Image image;
