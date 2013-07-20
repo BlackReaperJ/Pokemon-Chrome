@@ -22,6 +22,7 @@ import com.cvgstudios.pokemonchrome.images.Images;
 import com.cvgstudios.pokemonchrome.maps.Exitium;
 import com.cvgstudios.pokemonchrome.maps.Route1;
 import com.cvgstudios.pokemonchrome.music.BGMusicPlayer;
+import com.cvgstudios.pokemonchrome.music.MP3MusicPlayer;
 
 public class MainMenu extends JFrame implements ActionListener {
 	MyDrawPanel dPnl1;
