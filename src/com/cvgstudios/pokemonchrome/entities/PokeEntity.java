@@ -1,60 +1,61 @@
 package com.cvgstudios.pokemonchrome.entities;
 
-public enum PokeStats {
+public abstract class PokeEntity {
 
 	/*
 	 * The current level of the Pokemon.
 	 */
-	LEVEL,
+	protected int level;
 	/*
 	 * The maximum health points a Pokemon has.
 	 */
-	MAX_HP,
+	protected int maxHP;
 
 	/*
 	 * The current amount of health points a Pokemon has.
 	 */
-	CURRENT_HP,
+	protected int currentHP;
 
 	/*
 	 * The Attack stat determines how much damage a Pokemon can deal using a
 	 * physical move
 	 */
-	ATTACK,
+	protected int attack;
 
 	/*
 	 * The Defense stat determines how much damage a Pokemon receives when it is
 	 * hit with a physical move
 	 */
-	DEFENSE,
+	protected int defense;
 
 	/*
 	 * The Special Attack stat determines how much damage a Pokemon can deal
 	 * using a special move
 	 */
-	SPECIAL_ATTACK,
+	protected int specialAttack;
 
 	/*
 	 * The Special Defense stat determines how much damage a Pokemon receives
 	 * when it is hit with a special move
 	 */
-	SPECIAL_DEFENSE,
+	protected int specialDefense;
 
 	/*
 	 * The Speed stat determines how quickly a Pokemon can act in battle
 	 */
-	SPEED(),
+	protected int speed;
 
 	/*
 	 * The type the Pokemon is.
-	 * 
-	 * 1 = Fire, 2 = Water, 3 = Grass
 	 */
-	TYPE;
-	private PokeStats() {
+	protected String type;
+	/*
+	 * The gender of the Pokemon.
+	 */
+	protected String gender;
+
+	private PokeEntity() {
 
 	}
-	
-	
-	
+
 }
