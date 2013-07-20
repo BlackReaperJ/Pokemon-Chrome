@@ -78,7 +78,7 @@ public enum Images implements ImgPathConstants {
 	Exitium(MAP_PATH + "/Exitium.png"), Route1(MAP_PATH + "/Route1.png"), House1Top(
 			MAP_PATH + "/House1Top.png"), House1Bot(MAP_PATH + "/House1Bot.png"), MiracleForest1(
 			MAP_PATH + "/MiracleForest1.png"), MiracleForest2(MAP_PATH
-			+ "/MiracleForest2.png"), MapleLodge("MapleLodge.png"),
+			+ "/MiracleForest2.png"), MapleLodge(MAP_PATH + "/MapleLodge.png"),
 
 	// Map decorations (the stuff you code on top of the map!)
 	House1Overlay(STUCTURES_SPRITES_PATH + "/House1Overlay.png"), House2Overlay(
