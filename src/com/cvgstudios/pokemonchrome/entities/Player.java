@@ -9,6 +9,7 @@ public class Player extends Human {
 	}
 
 	protected int money;
+	protected int badges;
 
 	public int getMoney() {
 		return money;
@@ -17,5 +18,14 @@ public class Player extends Human {
 	public void setMoney(int money) {
 		this.money = money;
 	}
+
+	public int getBadges() {
+		return badges;
+	}
+
+	public void setBadges(int badges) {
+		this.badges = badges;
+	}
+
 
 }
