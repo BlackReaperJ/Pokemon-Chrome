@@ -3,11 +3,12 @@ package com.cvgstudios.pokemonchrome.entities;
 import java.awt.Graphics;
 
 public abstract class Entity {
-	protected int money;
 	protected int badges;
 
 	protected int x;
 	protected int y;
+	protected int width;
+	protected int height;
 
 	public Entity(int x, int y) {
 		this.x = x;
@@ -15,15 +16,6 @@ public abstract class Entity {
 	}
 
 	public void render(Graphics g) {
-
-	}
-
-	public int getMoney() {
-		return money;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
 	}
 
 	public int getBadges() {

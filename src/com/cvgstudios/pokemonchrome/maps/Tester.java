@@ -11,9 +11,13 @@ import javax.swing.JFrame;
 import com.cvgstudios.pokemonchrome.entities.Player;
 import com.cvgstudios.pokemonchrome.images.Images;
 
+@SuppressWarnings("serial")
 public class Tester extends JFrame implements KeyListener {
 
-	Player player;
+	private Image i;
+	private Graphics dbGraphics;
+
+	Player p;
 	Image bg = Images.MoveTester.getImage();
 
 	Image[] playerUp = { Images.PlayerUp.getImage(),
@@ -38,8 +42,7 @@ public class Tester extends JFrame implements KeyListener {
 		setLocationRelativeTo(null);
 
 		addKeyListener(this);
-		player = new Player(200, 200, playerLeft, playerRight, playerDown,
-				playerUp);
+		p = new Player(200, 200, playerLeft, playerRight, playerDown, playerUp);
 	}
 
 	/**
@@ -51,52 +54,33 @@ public class Tester extends JFrame implements KeyListener {
 	}
 
 	@Override
-	public void update(Graphics g) {
-		paint(g);
-	}
-
-	@Override
 	public void paint(Graphics g) {
 		g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 
-		player.render(g);
-		g.dispose();
-		repaint();
+		p.render(g);
 
+		repaint();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_W) {
-			player.setMoving();
-			player.setYD(-1);
-			player.setDirection(1);
+			p.moveUp();
 		} else if (e.getKeyCode() == KeyEvent.VK_A) {
-			player.setMoving();
-			player.setXD(-1);
-			player.setDirection(4);
+			p.moveLeft();
 		} else if (e.getKeyCode() == KeyEvent.VK_D) {
-			player.setMoving();
-			player.setXD(+1);
-			player.setDirection(2);
+			p.moveRight();
 		} else if (e.getKeyCode() == KeyEvent.VK_S) {
-			player.setMoving();
-			player.setYD(+1);
-			player.setDirection(3);
+			p.moveDown();
 		}
 	}
 
-	@Override
 	public void keyReleased(KeyEvent e) {
-		player.setXD(0);
-		player.setYD(0);
-		player.resetSteps();
+		p.stopMovement();
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
