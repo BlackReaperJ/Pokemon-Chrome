@@ -21,6 +21,7 @@
 package com.cvgstudios.pokemonchrome;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -350,13 +351,13 @@ public class GameFile {
 				}
 
 			}
+			fileReader.close();
 
 			stralBadges = stralBadgesInFile;
 		} catch (IOException e) {
 			System.err.println("SaveFile class has errified on itself.");
 			e.printStackTrace();
 		}
-
 	}
 
 	public static void saveFile() {

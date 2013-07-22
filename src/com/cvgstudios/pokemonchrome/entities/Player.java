@@ -6,6 +6,8 @@ public class Player extends Human {
 
 	public Player(int x, int y, Image[] l, Image[] r, Image[] d, Image[] u) {
 		super(x, y, l, r, d, u);
+
+		screenLocked = true;
 	}
 
 	protected int money;
@@ -26,6 +28,5 @@ public class Player extends Human {
 	public void setBadges(int badges) {
 		this.badges = badges;
 	}
-
 
 }

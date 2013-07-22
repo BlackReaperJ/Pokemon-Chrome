@@ -1,20 +1,21 @@
 package com.cvgstudios.pokemonchrome.maps;
 
-import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Color;
-import java.awt.*;
-import java.awt.Font;
-import java.net.URL;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.*;
-import javax.swing.Timer;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import com.cvgstudios.pokemonchrome.images.*;
-import com.cvgstudios.pokemonchrome.*;
+import java.io.File;
+import java.io.FileInputStream;
+
+import javax.swing.JFrame;
+
+import com.cvgstudios.pokemonchrome.GameFile;
+import com.cvgstudios.pokemonchrome.entities.Player;
+import com.cvgstudios.pokemonchrome.images.Images;
 
 public class Route1 extends JFrame implements ActionListener {
 
@@ -29,7 +30,19 @@ public class Route1 extends JFrame implements ActionListener {
 	private Graphics dbg;// double buffer
 	int downStep = -1, upStep = 0, leftStep = -1, rightStep = -1;
 	int[] party;
-	
+
+	Image[] playerUp = { Images.PlayerUp.getImage(),
+			Images.PlayerUp1.getImage(), Images.PlayerUp2.getImage() };
+	Image[] playerDown = { Images.PlayerDown.getImage(),
+			Images.PlayerDown1.getImage(), Images.PlayerDown2.getImage() };
+	Image[] playerRight = { Images.PlayerRight.getImage(),
+			Images.PlayerRight1.getImage(), Images.PlayerRight2.getImage() };
+
+	Image[] playerLeft = { Images.PlayerLeft.getImage(),
+			Images.PlayerLeft1.getImage(), Images.PlayerLeft2.getImage() };
+	Player player = new Player(200, 200, playerLeft, playerRight, playerDown,
+			playerUp);
+
 	Image route1, down, down1, down2, left, left1, left2, right, right1,
 			right2, up, up1, up2, exitium, mapleLodge;
 	Image columnTrees, pokeball3, train1Right, train1Right1, train1Right2,
@@ -118,6 +131,7 @@ public class Route1 extends JFrame implements ActionListener {
 					downStep = -1;
 					rightStep = -1;
 					leftStep = leftStep + 1;
+					player.moveLeft();
 				} else {
 					GameFile.iLocX = GameFile.iLocX + 8;
 					upStep = -1;
@@ -153,6 +167,7 @@ public class Route1 extends JFrame implements ActionListener {
 					rightStep = rightStep + 1;
 					downStep = -1;
 					upStep = -1;
+					player.moveRight();
 				} else {
 					GameFile.iLocX = GameFile.iLocX - 8;
 					upStep = -1;
@@ -181,6 +196,7 @@ public class Route1 extends JFrame implements ActionListener {
 					downStep = -1;
 					rightStep = -1;
 					upStep = upStep + 1;
+					player.moveUp();
 				} else {
 					GameFile.iLocY = GameFile.iLocY + 8;
 					leftStep = -1;
@@ -209,6 +225,7 @@ public class Route1 extends JFrame implements ActionListener {
 					leftStep = -1;
 					rightStep = -1;
 					downStep = downStep + 1;
+					player.moveDown();
 				} else {
 					GameFile.iLocY = GameFile.iLocY - 8;
 					upStep = -1;
@@ -303,6 +320,8 @@ public class Route1 extends JFrame implements ActionListener {
 			g.drawString(GameFile.iLocX + "  " + GameFile.iLocY + "  "
 					+ GameFile.iLocation + "  ", 250, 300);
 		}
+		player.render(g);
+
 		// Graphics2D g2 = (Graphics2D)g;
 		// for(int GameFile.iLocX=0;GameFile.iLocX<=600;GameFile.iLocX+=25){
 		// g2.drawLine(GameFile.iLocX,0,GameFile.iLocX,600);

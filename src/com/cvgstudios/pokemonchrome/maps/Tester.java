@@ -13,11 +13,11 @@ import com.cvgstudios.pokemonchrome.images.Images;
 
 @SuppressWarnings("serial")
 public class Tester extends JFrame implements KeyListener {
-
-	private Image i;
-	private Graphics dbGraphics;
-
 	Player p;
+
+	private Image dbImage;//
+	private Graphics dbg;// double buffer
+
 	Image bg = Images.MoveTester.getImage();
 
 	Image[] playerUp = { Images.PlayerUp.getImage(),
@@ -53,12 +53,17 @@ public class Tester extends JFrame implements KeyListener {
 
 	}
 
-	@Override
 	public void paint(Graphics g) {
+		dbImage = createImage(getWidth(), getHeight());
+		dbg = dbImage.getGraphics();
+		paintComponent(dbg);
+		g.drawImage(dbImage, 0, 0, this);
+		repaint();
+	}
+
+	public void paintComponent(Graphics g) {
 		g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
-
 		p.render(g);
-
 		repaint();
 	}
 

@@ -1,11 +1,12 @@
 package com.cvgstudios.pokemonchrome.entities;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.Timer;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /*
  * create a new class called human extends entity and put most of this stuff in there
@@ -13,8 +14,13 @@ import javax.swing.Timer;
 
 public class Human extends Entity implements ActionListener {
 	protected int money;
-	private int xd, yd;
+	boolean screenLocked;
+	private double xd;
+	private double yd;
+
 	Timer t;
+	TimerTask task;
+
 	int direction = 3;
 	int step;
 
@@ -39,8 +45,8 @@ public class Human extends Entity implements ActionListener {
 	@Override
 	public void render(Graphics g) {
 		move();
-		// g.setColor(Color.ORANGE);
-		// g.fillRect(x, y, 25, 25);
+		g.setColor(Color.ORANGE);
+		g.fillRect(x, y, 50, 50);
 		if (direction == 1)
 			g.drawImage(up[step], x, y, 50, 50, null);
 		if (direction == 2)
@@ -57,8 +63,8 @@ public class Human extends Entity implements ActionListener {
 		y += yd;
 	}
 
-	public void setXD(int val) {
-		xd = val;
+	public void setXD(double d) {
+		xd = d;
 	}
 
 	public void setYD(int val) {
@@ -70,13 +76,19 @@ public class Human extends Entity implements ActionListener {
 		direction = d;
 		if (moving) {
 			if (!timerStarted) {
-				t = new Timer(25, this);
-				t.start();
-			} else
-				t.restart();
-
+				t = new Timer();
+				task = new TimerTask() {
+					public void run() {
+						if (step == 1) {
+							step = 2;
+						} else
+							step = 1;
+					}
+				};
+				t.scheduleAtFixedRate(task, 0, 125);
+				task.run();
+			}
 			timerStarted = true;
-			t.setRepeats(true);
 		}
 	}
 
@@ -86,7 +98,9 @@ public class Human extends Entity implements ActionListener {
 			setYD(0);
 			step = 0;
 			moving = false;
-			t.stop();
+			t.cancel();
+			t.purge();
+			timerStarted = false;
 		}
 	}
 
@@ -123,17 +137,13 @@ public class Human extends Entity implements ActionListener {
 
 	public void moveLeft() {
 		this.setMoving();
-		this.setXD(-1);
+		this.setXD(-0.5);
 		this.setDirection(4);
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if (step == 1) {
-			step = 2;
-		} else
-			step = 1;
 	}
 
 }
