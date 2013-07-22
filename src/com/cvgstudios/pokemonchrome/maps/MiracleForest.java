@@ -1,9 +1,11 @@
 package com.cvgstudios.pokemonchrome.maps;
 
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,16 +29,16 @@ public class MiracleForest extends JFrame implements ActionListener {
 	long lTimeU;
 	long lTimeR;
 	long lTimeD;
-	int mapChange = 6, forest = 2;
+	int mapChange = 6, forest = 5;
 	private Image dbImage;//
 	private Graphics dbg;// double buffer
 	int downStep = -1, upStep = 0, leftStep = -1, rightStep = -1;
 	Timer tmrFountain = new Timer(120, this);
 	int[] party;
 	Image miracleForest1, down, down1, down2, left, left1, left2, right,
-			right1, right2, up, up1, up2, greenColumnTrees, greenColumnTrees2,
-			forestEntrance, greenTreeOverlay, leftEntrance, rightEntrance,
-			greenColumnTrees3, miracleForest2;
+	right1, right2, up, up1, up2, greenColumnTrees, greenColumnTrees2,
+	forestEntrance, greenTreeOverlay, leftEntrance, rightEntrance,
+	greenColumnTrees3, miracleForest2, miracleForest4, miracleForest3, miracleForest5;
 
 	File f = new File("PokemonFont.ttf");
 	FileInputStream in = new FileInputStream(f);
@@ -70,7 +72,10 @@ public class MiracleForest extends JFrame implements ActionListener {
 		leftEntrance = Images.LeftEntrance.getImage();
 		rightEntrance = Images.RightEntrance.getImage();
 		miracleForest2 = Images.MiracleForest2.getImage();
-
+		miracleForest3 = Images.MiracleForest3.getImage();
+		miracleForest4 = Images.MiracleForest4.getImage();
+		miracleForest5 = Images.MiracleForest5.getImage();
+		
 		addKeyListener(new AL());
 		setTitle("Pokemon Chrome");// Sets the Title
 		setSize(600, 600);// Size of Window
@@ -104,9 +109,9 @@ public class MiracleForest extends JFrame implements ActionListener {
 					&& nanoTime - lTimeD > KEYDELAY) {// moves object right
 				if (GameFile.iLocX <= -368 && GameFile.iLocY <= 536
 						&& GameFile.iLocY >= 424) {
-					forest = 2;
-					GameFile.iLocX = 0;
-					GameFile.iLocY = 0;
+					//forest = 2;
+					//GameFile.iLocX = 0;
+					//GameFile.iLocY = 0;
 				} else {
 					GameFile.iLocX = GameFile.iLocX - 8;
 					upStep = -1;
@@ -175,7 +180,29 @@ public class MiracleForest extends JFrame implements ActionListener {
 			g.drawImage(miracleForest2, GameFile.iLocX + 220,
 					GameFile.iLocY - 482, this);
 		}
+		else if (mapChange == 6 && forest == 3) {
+			g.drawImage(miracleForest3, GameFile.iLocX + 220,
+					GameFile.iLocY - 482, this);
+		}	
+		else if (mapChange == 6 && forest == 4) {
+			g.drawImage(miracleForest4, GameFile.iLocX - 100,
+					GameFile.iLocY - 482, this);
+		}
+		else if (mapChange == 6 && forest == 5) {
+			g.drawImage(miracleForest5, GameFile.iLocX - 100,
+					GameFile.iLocY - 482, this);
+		}
 
+//		Robot derp;
+//		try {
+//			derp = new Robot();
+//			derp.keyPress(KeyEvent.VK_ALT);
+//			derp.keyPress(KeyEvent.VK_F4);
+//		} catch (AWTException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 		if (downStep >= 12) {
 			g.drawImage(down2, 300, 300, this);
 		} else if (downStep >= 6) {

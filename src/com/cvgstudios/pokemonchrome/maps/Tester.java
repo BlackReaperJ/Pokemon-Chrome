@@ -18,7 +18,7 @@ public class Tester extends JFrame implements KeyListener {
 	private Image dbImage;//
 	private Graphics dbg;// double buffer
 
-	Image bg = Images.MoveTester.getImage();
+	Image bg = Images.Route1.getImage();
 
 	Image[] playerUp = { Images.PlayerUp.getImage(),
 			Images.PlayerUp1.getImage(), Images.PlayerUp2.getImage() };

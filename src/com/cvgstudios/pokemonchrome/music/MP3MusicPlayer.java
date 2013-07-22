@@ -11,9 +11,9 @@ public class MP3MusicPlayer {
 		player.play();
 	}
 
-	public void set(String f) {
-		player.set(f);
-	}
+//	public void set(String f) {
+//		player.set(f);
+//	}
 
 	public void play() {
 		player.play();
@@ -24,7 +24,7 @@ public class MP3MusicPlayer {
 	}
 
 	public void stop() {
-		player.pause();
+		player.stop();
 	}
 
 }
