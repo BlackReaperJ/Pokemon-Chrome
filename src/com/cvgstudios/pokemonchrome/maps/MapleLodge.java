@@ -76,6 +76,7 @@ public class MapleLodge extends JFrame implements ActionListener {
 		setVisible(true);// Makes it visible
 		setBackground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// new musicPlayPoke("Music/NimbasaCity.wav").start();
 
 		Boundaries.initializeBoundaries();
 

@@ -100,6 +100,7 @@ public class Route1 extends JFrame implements ActionListener {
 		setVisible(true);// Makes it visible
 		setBackground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// new musicPlayPoke("Music/NimbasaCity.wav").start();
 		GameFile.iLocX = GameFile.iLocX + 4;
 	}
 

@@ -21,7 +21,6 @@ import com.cvgstudios.pokemonchrome.FriendsRivals;
 import com.cvgstudios.pokemonchrome.GameFile;
 import com.cvgstudios.pokemonchrome.images.Images;
 import com.cvgstudios.pokemonchrome.music.BGMusicPlayer;
-import com.cvgstudios.pokemonchrome.music.MP3MusicPlayer;
 
 public class Exitium extends JFrame implements ActionListener {
 	ClassLoader cl = Exitium.class.getClassLoader();// Gets Image from URL
@@ -198,7 +197,7 @@ public class Exitium extends JFrame implements ActionListener {
 		setVisible(true);// Makes it visible
 		setBackground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		new MP3MusicPlayer("Music/NimbasaCity.mp3").play();
+		new BGMusicPlayer("Music/NimbasaCity.wav").start();
 	}
 
 	public void actionPerformed(ActionEvent e) {

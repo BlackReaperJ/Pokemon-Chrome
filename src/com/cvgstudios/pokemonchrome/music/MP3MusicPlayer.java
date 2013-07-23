@@ -6,15 +6,14 @@ import imr.media.SoundPlayer;
 public class MP3MusicPlayer {
 	Player player;
 
-	public MP3MusicPlayer(String f) {
+	public MP3MusicPlayer() {
 		player = new SoundPlayer();
-		set(f);
 		player.play();
 	}
 
-	public void set(String f) {
-		player.set(f);
-	}
+//	public void set(String f) {
+//		player.set(f);
+//	}
 
 	public void play() {
 		player.play();

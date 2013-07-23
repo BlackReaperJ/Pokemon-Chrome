@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.cvgstudios.pokemonchrome.GameFile;
-
 /*
  * create a new class called human extends entity and put most of this stuff in there
  */
@@ -23,7 +21,7 @@ public class Human extends Entity implements ActionListener {
 	Timer t;
 	TimerTask task;
 
-	int direction = 1;
+	int direction = 3;
 	int step;
 
 	Image[] left;
@@ -47,21 +45,30 @@ public class Human extends Entity implements ActionListener {
 	@Override
 	public void render(Graphics g) {
 		move();
+		g.setColor(Color.ORANGE);
+		g.fillRect(x, y, 50, 50);
 		if (direction == 1)
-			g.drawImage(up[step], x, y, 20, 20, null);
+			g.drawImage(up[step], x, y, 50, 50, null);
 		if (direction == 2)
-			g.drawImage(right[step], x, y, 20, 20, null);
+			g.drawImage(right[step], x, y, 50, 50, null);
 		if (direction == 3)
-			g.drawImage(down[step], x, y, 20, 20, null);
+			g.drawImage(down[step], x, y, 50, 50, null);
 		if (direction == 4)
-			g.drawImage(left[step], x, y, 20, 20, null);
+			g.drawImage(left[step], x, y, 50, 50, null);
 
 	}
 
 	private void move() {
+		x += xd;
+		y += yd;
+	}
 
-		GameFile.iLocY -= yd;
-		GameFile.iLocX -= xd;
+	public void setXD(double d) {
+		xd = d;
+	}
+
+	public void setYD(int val) {
+		yd = val;
 	}
 
 	// 1=up,2=right,3=down,4=left
@@ -86,23 +93,15 @@ public class Human extends Entity implements ActionListener {
 	}
 
 	public void stopMovement() {
-		step = 0;
-		setXD(0);
-		setYD(0);
-		moving = false;
-		t.cancel();
-		t.purge();
-		timerStarted = false;
-		System.out.println(x + "," + y);
-		moving = false;
-	}
-
-	public void setXD(double d) {
-		xd = d;
-	}
-
-	public void setYD(int val) {
-		yd = val;
+		if (moving) {
+			setXD(0);
+			setYD(0);
+			step = 0;
+			moving = false;
+			t.cancel();
+			t.purge();
+			timerStarted = false;
+		}
 	}
 
 	public void setMoving() {
@@ -119,22 +118,26 @@ public class Human extends Entity implements ActionListener {
 	}
 
 	public void moveUp() {
-		setYD(+1);
+		this.setMoving();
+		this.setYD(-1);
 		this.setDirection(1);
 	}
 
 	public void moveRight() {
-		setXD(-1);
+		this.setMoving();
+		this.setXD(+1);
 		this.setDirection(2);
 	}
 
 	public void moveDown() {
-		setYD(-1);
+		this.setMoving();
+		this.setYD(+1);
 		this.setDirection(3);
 	}
 
 	public void moveLeft() {
-		setXD(+1);
+		this.setMoving();
+		this.setXD(-0.5);
 		this.setDirection(4);
 
 	}

@@ -2,14 +2,12 @@ package com.cvgstudios.pokemonchrome.maps;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-import com.cvgstudios.pokemonchrome.GameFile;
 import com.cvgstudios.pokemonchrome.entities.Player;
 import com.cvgstudios.pokemonchrome.images.Images;
 
@@ -32,8 +30,6 @@ public class Tester extends JFrame implements KeyListener {
 	Image[] playerLeft = { Images.PlayerLeft.getImage(),
 			Images.PlayerLeft1.getImage(), Images.PlayerLeft2.getImage() };
 
-	private boolean oneKeyPressed;
-
 	public Tester() {
 		// TODO Auto-generated constructor stub
 
@@ -46,8 +42,7 @@ public class Tester extends JFrame implements KeyListener {
 		setLocationRelativeTo(null);
 
 		addKeyListener(this);
-		p = new Player(getWidth() / 2, getHeight() / 2, playerLeft,
-				playerRight, playerDown, playerUp);
+		p = new Player(200, 200, playerLeft, playerRight, playerDown, playerUp);
 	}
 
 	/**
@@ -67,50 +62,30 @@ public class Tester extends JFrame implements KeyListener {
 	}
 
 	public void paintComponent(Graphics g) {
-		g.drawImage(bg, 0 - GameFile.iLocX, 0 - GameFile.iLocY, getWidth(),
-				getHeight(), this);
+		g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
 		p.render(g);
-
-		// g.setColor(Color.PINK);
-		// Graphics2D grid = (Graphics2D) g;
-		// for (int x = 0; x <= getWidth(); x += 25) {
-		// grid.drawLine(x, 0, x, getHeight());
-		// grid.drawString("" + x, x + 5, 50);
-		// }
-		// for (int y = 25; y <= getHeight(); y += 25) {
-		// grid.drawLine(0, y, getWidth(), y);
-		// grid.drawString(" " + y, 0, y + 20);
-		// }
 		repaint();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (!oneKeyPressed) {
-			if (e.getKeyCode() == KeyEvent.VK_W) {
-				p.moveUp();
-				oneKeyPressed = true;
-			} else if (e.getKeyCode() == KeyEvent.VK_A) {
-				p.moveLeft();
-				oneKeyPressed = true;
-			} else if (e.getKeyCode() == KeyEvent.VK_D) {
-				p.moveRight();
-				oneKeyPressed = true;
-			} else if (e.getKeyCode() == KeyEvent.VK_S) {
-				p.moveDown();
-				oneKeyPressed = true;
-			}
+		if (e.getKeyCode() == KeyEvent.VK_W) {
+			p.moveUp();
+		} else if (e.getKeyCode() == KeyEvent.VK_A) {
+			p.moveLeft();
+		} else if (e.getKeyCode() == KeyEvent.VK_D) {
+			p.moveRight();
+		} else if (e.getKeyCode() == KeyEvent.VK_S) {
+			p.moveDown();
 		}
 	}
 
 	public void keyReleased(KeyEvent e) {
-		oneKeyPressed = false;
 		p.stopMovement();
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		repaint();
 	}
 
 }
