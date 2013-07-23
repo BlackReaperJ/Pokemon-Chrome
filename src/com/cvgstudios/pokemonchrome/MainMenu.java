@@ -21,7 +21,7 @@ import javax.swing.WindowConstants;
 import com.cvgstudios.pokemonchrome.images.Images;
 import com.cvgstudios.pokemonchrome.maps.Exitium;
 import com.cvgstudios.pokemonchrome.maps.Route1;
-import com.cvgstudios.pokemonchrome.music.BGMusicPlayer;
+import com.cvgstudios.pokemonchrome.music.MP3MusicPlayer;
 import com.cvgstudios.pokemonchrome.music.MP3MusicPlayer;
 
 public class MainMenu extends JFrame implements ActionListener {
@@ -54,31 +54,31 @@ public class MainMenu extends JFrame implements ActionListener {
 		boolean musicPlaying = false;// Code for the music
 		boolean musicPlaying2 = false;
 		MainMenu mainMenu = new MainMenu();
-		BGMusicPlayer creditMusic = new BGMusicPlayer("Music/Credits.wav");
-		BGMusicPlayer introMusic = new BGMusicPlayer("Music/PokemonHGSS.wav");
+		MP3MusicPlayer creditMusic = new MP3MusicPlayer("Music/Credits.mp3");
+		MP3MusicPlayer introMusic = new MP3MusicPlayer("Music/PokemonHGSS.mp3");
 
 		while (true) {
 			if (musicPlaying2 && (screenCount == 13 || screenCount == 14)) {
 				musicPlaying2 = false;
 				introMusic.stop();
-				introMusic = new BGMusicPlayer("Music/PokemonHGSS.wav");
+				introMusic = new MP3MusicPlayer("Music/PokemonHGSS.mp3");
 			}
 
 			if (screenCount >= 1 && screenCount < 13 && !musicPlaying2) {
 				if (!musicPlaying2) {
 					musicPlaying2 = true;
-					introMusic.start();
+					introMusic.play();
 				}
 			}
 			if (screenCount != 14 && musicPlaying) {
 				musicPlaying = false;
 				creditMusic.stop();
-				creditMusic = new BGMusicPlayer("Music/Credits.wav");
+				creditMusic = new MP3MusicPlayer("Music/Credits.mp3");
 			}
 			if (screenCount == 14) {
 				if (!musicPlaying) {
 					musicPlaying = true;
-					creditMusic.start();
+					creditMusic.play();
 				}
 			}
 			if (screenCount == 13) {

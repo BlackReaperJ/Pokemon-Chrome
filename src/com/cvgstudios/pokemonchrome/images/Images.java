@@ -82,8 +82,8 @@ public enum Images implements ImgPathConstants {
 
 	// Maps (the background, base thing)
 	Exitium(MAPS_PATH + "/Exitium.png"), Route1(MAPS_PATH + "/Route1.png"), House1Top(
-			MAPS_PATH + "House1Top.png"), House1Bot(
-			MAPS_PATH + "House1Bot.png"), MiracleForest1(
+			MAPS_PATH + "/House1Top.png"), House1Bot(
+			MAPS_PATH + "/House1Bot.png"), MiracleForest1(
 			MAPS_PATH + "/MiracleForest1.png"), MiracleForest2(
 			MAPS_PATH + "/MiracleForest2.png"),MapleLodge(
 			MAPS_PATH + "/MapleLodge.png"),Route2(
@@ -134,12 +134,12 @@ public enum Images implements ImgPathConstants {
 	// Natalie
 
 	Natalie(NPC_MENU_PATH + "/Natalie.png"), NatalieHead(START_BATTLE_PATH
-			+ "/NatalieHead.png"), NatalieBattleBack(MENU_BATTLE_PATH
+			+ "/NatalieHead.png"), NatalieBattleBack(SPRITES_BATTLE_PATH
 			+ "/NatalieBattleBack.png"),
 
 	PlayerFlashNormal(START_BATTLE_PATH
-			+ "/BattleStart/Player_flash_normal.gif"), OpponentFlashNormal(
-			START_BATTLE_PATH + "/Battle/BattleStart/Opponent_flash_normal.gif"),
+			+ "/Player_flash_normal.gif"), OpponentFlashNormal(
+			START_BATTLE_PATH + "/Opponent_flash_normal.gif"),
 
 	MainThrow(PLAYER_SPRITE_PATH + "/MainThrow.png"), MainThrow1(
 			PLAYER_SPRITE_PATH + "/MainThrow1.png"), MainThrow2(
@@ -149,7 +149,7 @@ public enum Images implements ImgPathConstants {
 			+ "/BlackBack.png"), Growl(SPRITE_ATTACK_PATH + "/Growl.png"), Leer(
 			SPRITE_ATTACK_PATH + "/Leer.png"),
 
-	Cosmet(SPRITES_PATH + "/Cosmet.png"), CosmetB(POKEMONB_SPRITES_PATH
+	Cosmet(POKEMON_SPRITES_PATH + "/Cosmet.png"), CosmetB(POKEMONB_SPRITES_PATH
 			+ "/CosmetB.png"), CosmetStart(STARTERS_MENU_PATH
 			+ "/CosmetStart.png"),
 
