@@ -31,6 +31,8 @@ public class Tester extends JFrame implements KeyListener {
 	Image[] playerLeft = { Images.PlayerLeft.getImage(),
 			Images.PlayerLeft1.getImage(), Images.PlayerLeft2.getImage() };
 
+	private boolean keyDown;
+
 	public Tester() {
 		// TODO Auto-generated constructor stub
 
@@ -64,26 +66,38 @@ public class Tester extends JFrame implements KeyListener {
 	}
 
 	public void paintComponent(Graphics g) {
-		g.drawImage(bg, 0 - GameFile.iLocX, 0 - GameFile.iLocY, getWidth(),
-				getHeight(), this);
+		g.drawImage(bg, 0 - (int) GameFile.locX, 0 - (int) GameFile.locY,
+				getWidth(), getHeight(), this);
 		p.render(g);
 		repaint();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_W) {
-			p.moveUp();
-		} else if (e.getKeyCode() == KeyEvent.VK_A) {
-			p.moveLeft();
-		} else if (e.getKeyCode() == KeyEvent.VK_D) {
-			p.moveRight();
-		} else if (e.getKeyCode() == KeyEvent.VK_S) {
-			p.moveDown();
+		while (!keyDown) {
+			if (e.getKeyCode() == KeyEvent.VK_W) {
+				setKeyDown(true);
+				p.moveUp();
+			} else if (e.getKeyCode() == KeyEvent.VK_A) {
+				setKeyDown(true);
+				p.moveLeft();
+			} else if (e.getKeyCode() == KeyEvent.VK_D) {
+				setKeyDown(true);
+				p.moveRight();
+			} else if (e.getKeyCode() == KeyEvent.VK_S) {
+				setKeyDown(true);
+				p.moveDown();
+			}
+
 		}
 	}
 
+	public void setKeyDown(Boolean b) {
+		keyDown = b;
+	}
+
 	public void keyReleased(KeyEvent e) {
+		setKeyDown(false);
 		p.stopMovement();
 	}
 

@@ -20,7 +20,7 @@ public class Human extends Entity implements ActionListener {
 	private double xd;
 	private double yd;
 
-	private final int SPEED = 1;
+	private final double SPEED = .5;
 
 	Timer t;
 	TimerTask task;
@@ -61,16 +61,16 @@ public class Human extends Entity implements ActionListener {
 	}
 
 	private void move() {
-		GameFile.iLocY += yd;
-		GameFile.iLocX += xd;
+		GameFile.locY += yd;
+		GameFile.locX += xd;
 	}
 
-	public void setXD(int val) {
-		xd = val;
+	public void setXD(double d) {
+		xd = d;
 	}
 
-	public void setYD(int val) {
-		yd = val;
+	public void setYD(double d) {
+		yd = d;
 	}
 
 	// 1=up,2=right,3=down,4=left
@@ -87,7 +87,7 @@ public class Human extends Entity implements ActionListener {
 							step = 1;
 					}
 				};
-				t.scheduleAtFixedRate(task, 0, 125);
+				t.scheduleAtFixedRate(task, 0, 250);
 				task.run();
 			}
 			timerStarted = true;

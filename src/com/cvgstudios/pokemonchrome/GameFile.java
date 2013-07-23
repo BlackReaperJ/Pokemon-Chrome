@@ -37,6 +37,9 @@ public class GameFile {
 	static final long L_MIN_TIME_BETWEEN_FILEOP = 1000000000;
 	static final String STR_SAVEFILE_NAME = "PlayerSaveFile.txt";
 	static final int GAME_VAR_AMOUNT = 5;
+
+	static public double locX;
+	static public double locY;
 	/*
 	 * 0 - Your initial pokemon, decides friends' pokemons 1 - meeting
 	 * frien,Jayce at start 2 - talking to your dad at start 3 - talking to your
