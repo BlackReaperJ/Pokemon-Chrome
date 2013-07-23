@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.cvgstudios.pokemonchrome.GameFile;
+
 /*
  * create a new class called human extends entity and put most of this stuff in there
  */
@@ -18,10 +20,12 @@ public class Human extends Entity implements ActionListener {
 	private double xd;
 	private double yd;
 
+	private final int SPEED = 1;
+
 	Timer t;
 	TimerTask task;
 
-	int direction = 3;
+	int direction = 1;
 	int step;
 
 	Image[] left;
@@ -45,26 +49,24 @@ public class Human extends Entity implements ActionListener {
 	@Override
 	public void render(Graphics g) {
 		move();
-		g.setColor(Color.ORANGE);
-		g.fillRect(x, y, 50, 50);
 		if (direction == 1)
-			g.drawImage(up[step], x, y, 50, 50, null);
+			g.drawImage(up[step], x, y, 25, 25, null);
 		if (direction == 2)
-			g.drawImage(right[step], x, y, 50, 50, null);
+			g.drawImage(right[step], x, y, 25, 25, null);
 		if (direction == 3)
-			g.drawImage(down[step], x, y, 50, 50, null);
+			g.drawImage(down[step], x, y, 25, 25, null);
 		if (direction == 4)
-			g.drawImage(left[step], x, y, 50, 50, null);
+			g.drawImage(left[step], x, y, 25, 25, null);
 
 	}
 
 	private void move() {
-		x += xd;
-		y += yd;
+		GameFile.iLocY += yd;
+		GameFile.iLocX += xd;
 	}
 
-	public void setXD(double d) {
-		xd = d;
+	public void setXD(int val) {
+		xd = val;
 	}
 
 	public void setYD(int val) {
@@ -120,25 +122,25 @@ public class Human extends Entity implements ActionListener {
 
 	public void moveUp() {
 		this.setMoving();
-		this.setYD(-1);
+		this.setYD(-1 * (SPEED));
 		this.setDirection(1);
 	}
 
 	public void moveRight() {
 		this.setMoving();
-		this.setXD(+1);
+		this.setXD(+1 * (SPEED));
 		this.setDirection(2);
 	}
 
 	public void moveDown() {
 		this.setMoving();
-		this.setYD(+1);
+		this.setYD(+1 * (SPEED));
 		this.setDirection(3);
 	}
 
 	public void moveLeft() {
 		this.setMoving();
-		this.setXD(-0.5);
+		this.setXD(-1 * (SPEED));
 		this.setDirection(4);
 
 	}

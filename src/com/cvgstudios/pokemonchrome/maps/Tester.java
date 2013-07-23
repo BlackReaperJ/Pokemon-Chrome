@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
+import com.cvgstudios.pokemonchrome.GameFile;
 import com.cvgstudios.pokemonchrome.entities.Player;
 import com.cvgstudios.pokemonchrome.images.Images;
 
@@ -42,7 +43,8 @@ public class Tester extends JFrame implements KeyListener {
 		setLocationRelativeTo(null);
 
 		addKeyListener(this);
-		p = new Player(200, 200, playerLeft, playerRight, playerDown, playerUp);
+		p = new Player(getWidth() / 2, getHeight() / 2, playerLeft,
+				playerRight, playerDown, playerUp);
 	}
 
 	/**
@@ -62,7 +64,8 @@ public class Tester extends JFrame implements KeyListener {
 	}
 
 	public void paintComponent(Graphics g) {
-		g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
+		g.drawImage(bg, 0 - GameFile.iLocX, 0 - GameFile.iLocY, getWidth(),
+				getHeight(), this);
 		p.render(g);
 		repaint();
 	}
