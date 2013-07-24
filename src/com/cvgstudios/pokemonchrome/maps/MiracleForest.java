@@ -21,7 +21,6 @@ import com.cvgstudios.pokemonchrome.GameFile;
 import com.cvgstudios.pokemonchrome.images.Images;
 
 public class MiracleForest extends JFrame implements ActionListener {
-	ClassLoader cl = MiracleForest.class.getClassLoader();
 
 	final long KEYDELAY = 1000000;
 	long lSystime;
@@ -38,7 +37,8 @@ public class MiracleForest extends JFrame implements ActionListener {
 	Image miracleForest1, down, down1, down2, left, left1, left2, right,
 	right1, right2, up, up1, up2, greenColumnTrees, greenColumnTrees2,
 	forestEntrance, greenTreeOverlay, leftEntrance, rightEntrance,
-	greenColumnTrees3, miracleForest2, miracleForest4, miracleForest3, miracleForest5;
+	greenColumnTrees3, miracleForest2, miracleForest4, miracleForest3, miracleForest5, 
+	flashScreen, horizontalLog, verticalLog;
 
 	File f = new File("PokemonFont.ttf");
 	FileInputStream in = new FileInputStream(f);
@@ -50,7 +50,6 @@ public class MiracleForest extends JFrame implements ActionListener {
 	}
 
 	public MiracleForest() throws Exception {
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		miracleForest1 = Images.MiracleForest1.getImage();
 		down = Images.PlayerDown.getImage();
 		down1 = Images.PlayerDown1.getImage();
@@ -75,6 +74,9 @@ public class MiracleForest extends JFrame implements ActionListener {
 		miracleForest3 = Images.MiracleForest3.getImage();
 		miracleForest4 = Images.MiracleForest4.getImage();
 		miracleForest5 = Images.MiracleForest5.getImage();
+		flashScreen = Images.FlashScreen.getImage();
+		horizontalLog = Images.HorizontalLog.getImage();
+		verticalLog = Images.VerticalLog.getImage();
 		
 		addKeyListener(new AL());
 		setTitle("Pokemon Chrome");// Sets the Title
@@ -189,8 +191,8 @@ public class MiracleForest extends JFrame implements ActionListener {
 					GameFile.iLocY - 482, this);
 		}
 		else if (mapChange == 6 && forest == 5) {
-			g.drawImage(miracleForest5, GameFile.iLocX - 100,
-					GameFile.iLocY - 482, this);
+			g.drawImage(miracleForest5, GameFile.iLocX + 182,
+					GameFile.iLocY + 190, this);
 		}
 
 //		Robot derp;
@@ -254,6 +256,28 @@ public class MiracleForest extends JFrame implements ActionListener {
 					GameFile.iLocY - 210, this);
 			g.drawImage(rightEntrance, GameFile.iLocX + 688,
 					GameFile.iLocY - 210, this);
+		}
+		else if (mapChange == 6 && forest == 5) {
+			//Column.Row
+			g.drawImage(verticalLog, GameFile.iLocX + 319, GameFile.iLocY + 370,this);//1,1
+			g.drawImage(verticalLog, GameFile.iLocX + 723, GameFile.iLocY + 370,this);//2,1
+			g.drawImage(verticalLog, GameFile.iLocX + 1122, GameFile.iLocY + 369,this);//3,1
+			g.drawImage(verticalLog, GameFile.iLocX + 1122, GameFile.iLocY + 769,this);//3,2
+			g.drawImage(verticalLog, GameFile.iLocX + 1522, GameFile.iLocY + 769,this);//4,2
+			g.drawImage(verticalLog, GameFile.iLocX + 723, GameFile.iLocY + 1168,this);//2,3
+			g.drawImage(verticalLog, GameFile.iLocX + 1122, GameFile.iLocY + 1168,this);//3,3
+			g.drawImage(verticalLog, GameFile.iLocX + 1522, GameFile.iLocY + 1168,this);//4,3
+			g.drawImage(horizontalLog, GameFile.iLocX + 412, GameFile.iLocY + 282,this);//1,1
+			g.drawImage(horizontalLog, GameFile.iLocX + 412, GameFile.iLocY + 692,this);//1,2
+			g.drawImage(horizontalLog, GameFile.iLocX + 812, GameFile.iLocY + 692,this);//2,2
+			g.drawImage(horizontalLog, GameFile.iLocX + 1212, GameFile.iLocY + 282,this);//3,1
+			g.drawImage(horizontalLog, GameFile.iLocX + 1212, GameFile.iLocY + 692,this);//3,2
+			g.drawImage(horizontalLog, GameFile.iLocX + 412, GameFile.iLocY + 1092,this);//1,3
+			g.drawImage(horizontalLog, GameFile.iLocX + 812, GameFile.iLocY + 1092,this);//2,3
+			g.drawImage(horizontalLog, GameFile.iLocX + 412, GameFile.iLocY + 1492,this);//1,4
+			g.drawImage(horizontalLog, GameFile.iLocX + 812, GameFile.iLocY + 1492,this);//2,4
+			g.drawImage(horizontalLog, GameFile.iLocX + 1212, GameFile.iLocY + 1492,this);//3,4
+			g.drawImage(flashScreen, 0 ,0,this);
 		}
 		g.drawString(GameFile.iLocX + "  " + GameFile.iLocY + "  " + mapChange
 				+ "  ", 250, 300);

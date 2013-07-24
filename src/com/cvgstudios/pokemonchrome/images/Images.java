@@ -109,7 +109,10 @@ public enum Images implements ImgPathConstants {
 			"Pictures/Sprites/Structures/ForestEntrance.png"), GreenTreeOverlay(
 			"Pictures/Sprites/Structures/GreenTreeOverlay.png"), LeftEntrance(
 			"Pictures/Sprites/Structures/LeftEntrance.png"), RightEntrance(
-			"Pictures/Sprites/Structures/RightEntrance.png"),
+			"Pictures/Sprites/Structures/RightEntrance.png"), FlashScreen(
+			"Pictures/Sprites/Structures/FlashScreen.png"),	HorizontalLog(
+			"Pictures/Sprites/Structures/HorizontalLog.png"), VerticalLog(
+			"Pictures/Sprites/Structures/VerticalLog.png"),
 
 	// GUI Things???
 	Arrow("Pictures/Sprites/Misc/Arrow.png"), Hand(
