@@ -82,16 +82,14 @@ public enum Images implements ImgPathConstants {
 
 	// Maps (the background, base thing)
 	Exitium(MAPS_PATH + "/Exitium.png"), Route1(MAPS_PATH + "/Route1.png"), House1Top(
-			MAPS_PATH + "House1Top.png"), House1Bot(
-			MAPS_PATH + "House1Bot.png"), MiracleForest1(
-			MAPS_PATH + "/MiracleForest1.png"), MiracleForest2(
-			MAPS_PATH + "/MiracleForest2.png"),MapleLodge(
-			MAPS_PATH + "/MapleLodge.png"),Route2(
-			MAPS_PATH + "/Route2.png"), MiracleForest4(
-			MAPS_PATH + "/MiracleForest4.png"), MiracleForest3(
-			MAPS_PATH + "/MiracleForest3.png"), MiracleForest5(
-			MAPS_PATH + "/MiracleForest5.png"),
-
+			MAPS_PATH + "/House1Top.png"), House1Bot(MAPS_PATH
+			+ "/House1Bot.png"), MiracleForest1(MAPS_PATH
+			+ "/MiracleForest1.png"), MiracleForest2(MAPS_PATH
+			+ "/MiracleForest2.png"), MapleLodge(MAPS_PATH + "/MapleLodge.png"), Route2(
+			MAPS_PATH + "/Route2.png"), MiracleForest4(MAPS_PATH
+			+ "/MiracleForest4.png"), MiracleForest3(MAPS_PATH
+			+ "/MiracleForest3.png"), MiracleForest5(MAPS_PATH
+			+ "/MiracleForest5.png"),
 
 	// Map decorations (the stuff you code on top of the map!)
 	House1Overlay("Pictures/Sprites/Structures/House1Overlay.png"), House2Overlay(
@@ -134,7 +132,7 @@ public enum Images implements ImgPathConstants {
 	// Natalie
 
 	Natalie(NPC_MENU_PATH + "/Natalie.png"), NatalieHead(START_BATTLE_PATH
-			+ "/NatalieHead.png"), NatalieBattleBack(MENU_BATTLE_PATH
+			+ "/NatalieHead.png"), NatalieBattleBack(START_BATTLE_PATH
 			+ "/NatalieBattleBack.png"),
 
 	PlayerFlashNormal(START_BATTLE_PATH
@@ -166,8 +164,7 @@ public enum Images implements ImgPathConstants {
 
 	Outline1(MENU_BATTLE_PATH + "/Outline1.png"), Outline2(MENU_BATTLE_PATH
 			+ "/Outline2.png"), Outline3(MENU_BATTLE_PATH + "/Outline3.png"), Outline4(
-			MENU_BATTLE_PATH + "/Outline4.png"),
-;
+			MENU_BATTLE_PATH + "/Outline4.png"), ;
 	private String filePath;
 	private Image image;
 	private boolean imageLoaded;

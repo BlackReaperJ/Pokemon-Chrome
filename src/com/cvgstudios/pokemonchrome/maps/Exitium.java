@@ -182,10 +182,10 @@ public class Exitium extends JFrame implements ActionListener {
 		arrow = Images.Arrow.getImage();
 		hand = Images.Hand.getImage();
 		tykepol = Images.Tykepol.getImage();
-		cosmet = Images.Cosmet.getImage();
+//		cosmet = Images.Cosmet.getImage();
 		embite = Images.Embite.getImage();
 		mainBattleBack = Images.MainBattleBack.getImage();
-		natalieBattleBack = Images.NatalieBattleBack.getImage();
+//		natalieBattleBack = Images.NatalieBattleBack.getImage();
 		vs2 = Images.Vs2.getImage();
 		mainHead = Images.MainHead.getImage();
 		natalieHead = Images.NatalieHead.getImage();

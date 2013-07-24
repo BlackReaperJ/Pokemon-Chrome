@@ -196,13 +196,13 @@ public class MainMenu extends JFrame implements ActionListener {
 
 	class MyDrawPanel extends JPanel {
 		public void paintComponent(Graphics g) {
-			// if (GameFile.iLocation >= 0 && GameFile.iLocation <= 2) {
-			// map = "Exitium Town";
-			// } else if (GameFile.iLocation == 3) {
-			// map = "Route 1";
-			// } else if (GameFile.iLocation == 4) {
-			// map = "MapleLodge Town";
-			// }
+			if (GameFile.iLocation >= 0 && GameFile.iLocation <= 2) {
+				map = "Exitium Town";
+			} else if (GameFile.iLocation == 3) {
+				map = "Route 1";
+			} else if (GameFile.iLocation == 4) {
+				map = "MapleLodge Town";
+			}
 			g.setColor(Color.WHITE);
 			if (screenCount >= 1) {
 				if (screenCount == 1)
