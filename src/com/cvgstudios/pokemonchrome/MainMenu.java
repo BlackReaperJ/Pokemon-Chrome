@@ -1,5 +1,7 @@
 package com.cvgstudios.pokemonchrome;
 
+import imr.media.SoundPlayer;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -21,8 +23,6 @@ import javax.swing.WindowConstants;
 import com.cvgstudios.pokemonchrome.images.Images;
 import com.cvgstudios.pokemonchrome.maps.Exitium;
 import com.cvgstudios.pokemonchrome.maps.Route1;
-import com.cvgstudios.pokemonchrome.music.BGMusicPlayer;
-import com.cvgstudios.pokemonchrome.music.MP3MusicPlayer;
 
 public class MainMenu extends JFrame implements ActionListener {
 	MyDrawPanel dPnl1;
@@ -50,35 +50,37 @@ public class MainMenu extends JFrame implements ActionListener {
 	Timer music = new Timer(80000, this);
 	int y = 0, velY = 2;// For Credit Scrolling
 
+	static boolean musicPlaying = false;// Code for the music
+	static boolean musicPlaying2 = false;
+	static public MainMenu mainMenu;
+	static SoundPlayer creditMusic = new SoundPlayer();
+	static SoundPlayer introMusic = new SoundPlayer();
+
 	public static void main(String[] args) throws Exception {
-		boolean musicPlaying = false;// Code for the music
-		boolean musicPlaying2 = false;
-		MainMenu mainMenu = new MainMenu();
-		BGMusicPlayer creditMusic = new BGMusicPlayer("Music/Credits.wav");
-		BGMusicPlayer introMusic = new BGMusicPlayer("Music/PokemonHGSS.wav");
+		mainMenu = new MainMenu();
+		creditMusic.set("Music/Credits.wav");
+		introMusic.set("Music/PokemonHGSS.wav");
 
 		while (true) {
 			if (musicPlaying2 && (screenCount == 13 || screenCount == 14)) {
 				musicPlaying2 = false;
 				introMusic.stop();
-				introMusic = new BGMusicPlayer("Music/PokemonHGSS.wav");
 			}
 
 			if (screenCount >= 1 && screenCount < 13 && !musicPlaying2) {
 				if (!musicPlaying2) {
 					musicPlaying2 = true;
-					introMusic.start();
+					introMusic.play();
 				}
 			}
 			if (screenCount != 14 && musicPlaying) {
 				musicPlaying = false;
 				creditMusic.stop();
-				creditMusic = new BGMusicPlayer("Music/Credits.wav");
 			}
 			if (screenCount == 14) {
 				if (!musicPlaying) {
 					musicPlaying = true;
-					creditMusic.start();
+					creditMusic.play();
 				}
 			}
 			if (screenCount == 13) {
@@ -194,13 +196,13 @@ public class MainMenu extends JFrame implements ActionListener {
 
 	class MyDrawPanel extends JPanel {
 		public void paintComponent(Graphics g) {
-			if (GameFile.iLocation >= 0 && GameFile.iLocation <= 2) {
-				map = "Exitium Town";
-			} else if (GameFile.iLocation == 3) {
-				map = "Route 1";
-			} else if (GameFile.iLocation == 4) {
-				map = "MapleLodge Town";
-			}
+			// if (GameFile.iLocation >= 0 && GameFile.iLocation <= 2) {
+			// map = "Exitium Town";
+			// } else if (GameFile.iLocation == 3) {
+			// map = "Route 1";
+			// } else if (GameFile.iLocation == 4) {
+			// map = "MapleLodge Town";
+			// }
 			g.setColor(Color.WHITE);
 			if (screenCount >= 1) {
 				if (screenCount == 1)

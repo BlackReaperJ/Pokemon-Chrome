@@ -1,6 +1,5 @@
-package com.cvgstudios.pokemonchrome.entities;
+ package com.cvgstudios.pokemonchrome.entities;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;

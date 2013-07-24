@@ -1,9 +1,10 @@
 package com.cvgstudios.pokemonchrome.maps;
 
+import imr.media.SoundPlayer;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -20,7 +21,6 @@ import javax.swing.Timer;
 import com.cvgstudios.pokemonchrome.FriendsRivals;
 import com.cvgstudios.pokemonchrome.GameFile;
 import com.cvgstudios.pokemonchrome.images.Images;
-import com.cvgstudios.pokemonchrome.music.BGMusicPlayer;
 
 public class Exitium extends JFrame implements ActionListener {
 	ClassLoader cl = Exitium.class.getClassLoader();// Gets Image from URL
@@ -197,7 +197,11 @@ public class Exitium extends JFrame implements ActionListener {
 		setVisible(true);// Makes it visible
 		setBackground(Color.BLACK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		new BGMusicPlayer("Music/NimbasaCity.wav").start();
+		
+		SoundPlayer cityMusic = new SoundPlayer();
+		cityMusic.set("Music/NimbasaCity.mp3");
+		cityMusic.play();
+
 	}
 
 	public void actionPerformed(ActionEvent e) {

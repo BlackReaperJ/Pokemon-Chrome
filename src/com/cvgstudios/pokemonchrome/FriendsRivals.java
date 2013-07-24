@@ -1,5 +1,7 @@
 package com.cvgstudios.pokemonchrome;
 
+import imr.media.SoundPlayer;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -19,7 +21,6 @@ import com.cvgstudios.pokemonchrome.battle.PokeExperience;
 import com.cvgstudios.pokemonchrome.battle.PokemonDmg;
 import com.cvgstudios.pokemonchrome.battle.PokemonStats;
 import com.cvgstudios.pokemonchrome.images.Images;
-import com.cvgstudios.pokemonchrome.music.BGMusicPlayer;
 
 public class FriendsRivals extends JFrame implements ActionListener {
 	ClassLoader cl = FriendsRivals.class.getClassLoader();
@@ -144,7 +145,10 @@ public class FriendsRivals extends JFrame implements ActionListener {
 		setVisible(true);// Makes it visible
 		setBackground(Color.BLACK);// Sets background colour to black
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		new BGMusicPlayer("Music/Shingeki.wav").start();
+		
+		SoundPlayer fightMusic = new SoundPlayer();
+		fightMusic.set("Music/Shingeki.mp3");
+		fightMusic.play();
 
 		GameFile.loadFile();// Loads the GameFile
 
