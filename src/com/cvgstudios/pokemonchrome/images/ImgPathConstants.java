@@ -2,7 +2,7 @@ package com.cvgstudios.pokemonchrome.images;
 
 public abstract interface ImgPathConstants {
 
-	static final String PIC_FOLDER = "res/imgs";
+	static final String PIC_FOLDER = "Pictures";
 
 	static final String SPRITES_PATH = PIC_FOLDER + "/Sprites";
 	static final String MENU_PATH = PIC_FOLDER + "/Menu";
