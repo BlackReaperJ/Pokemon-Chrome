@@ -19,6 +19,7 @@ import javax.swing.Timer;
 
 import com.cvgstudios.pokemonchrome.GameFile;
 import com.cvgstudios.pokemonchrome.images.Images;
+import com.cvgstudios.pokemonchrome.maps.MapleLodge.Boundaries;
 
 public class MiracleForest extends JFrame implements ActionListener {
 
@@ -28,17 +29,18 @@ public class MiracleForest extends JFrame implements ActionListener {
 	long lTimeU;
 	long lTimeR;
 	long lTimeD;
-	int mapChange = 6, forest = 5;
+	int mapChange = 6, forest = 1, oldMan = 0, boyY =0, velY =2;
 	private Image dbImage;//
 	private Graphics dbg;// double buffer
 	int downStep = -1, upStep = 0, leftStep = -1, rightStep = -1;
-	Timer tmrFountain = new Timer(120, this);
+	Timer tmrOldMan = new Timer(10, this);
 	int[] party;
 	Image miracleForest1, down, down1, down2, left, left1, left2, right,
 	right1, right2, up, up1, up2, greenColumnTrees, greenColumnTrees2,
 	forestEntrance, greenTreeOverlay, leftEntrance, rightEntrance,
 	greenColumnTrees3, miracleForest2, miracleForest4, miracleForest3, miracleForest5, 
-	flashScreen, horizontalLog, verticalLog;
+	flashScreen, horizontalLog, verticalLog, miracleForest6, miracleForest7, oldManDown, 
+	dialog, exclam;
 
 	File f = new File("PokemonFont.ttf");
 	FileInputStream in = new FileInputStream(f);
@@ -50,6 +52,7 @@ public class MiracleForest extends JFrame implements ActionListener {
 	}
 
 	public MiracleForest() throws Exception {
+		Boundaries.initializeBoundaries();
 		miracleForest1 = Images.MiracleForest1.getImage();
 		down = Images.PlayerDown.getImage();
 		down1 = Images.PlayerDown1.getImage();
@@ -74,10 +77,15 @@ public class MiracleForest extends JFrame implements ActionListener {
 		miracleForest3 = Images.MiracleForest3.getImage();
 		miracleForest4 = Images.MiracleForest4.getImage();
 		miracleForest5 = Images.MiracleForest5.getImage();
+		miracleForest6 = Images.MiracleForest6.getImage();
+		miracleForest7 = Images.MiracleForest7.getImage();
 		flashScreen = Images.FlashScreen.getImage();
 		horizontalLog = Images.HorizontalLog.getImage();
 		verticalLog = Images.VerticalLog.getImage();
-		
+		oldManDown = Images.OldManDown.getImage();
+		exclam = Images.Exclamation.getImage();
+		dialog = Images.DialogBox.getImage();
+
 		addKeyListener(new AL());
 		setTitle("Pokemon Chrome");// Sets the Title
 		setSize(600, 600);// Size of Window
@@ -89,33 +97,57 @@ public class MiracleForest extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
+		if(forest ==1 && oldMan ==0){
+			boyY = boyY + velY;
+		}
+		if(forest ==1 && oldMan ==1){
+			GameFile.iLocY = GameFile.iLocY + velY;
+		}
 	}
 
 	public class AL extends KeyAdapter {
 		public void keyPressed(KeyEvent e) {
 			int keyCode = e.getKeyCode();// Get key preseed
 			if (keyCode == e.VK_S) {
+				if(oldMan >=2 && forest ==1 && oldMan <=8){
+					oldMan = oldMan +1;
+				}
 			}
 			long nanoTime = System.nanoTime();
 			if (keyCode == e.VK_LEFT && nanoTime - lTimeU > KEYDELAY
 					&& nanoTime - lTimeD > KEYDELAY) {// moves object left
-				GameFile.iLocX = GameFile.iLocX + 8;
-				upStep = -1;
-				downStep = -1;
-				rightStep = -1;
-				leftStep = leftStep + 1;
-				lTimeL = nanoTime;
+				if (BoundaryBox.isMovePossible(GameFile.iLocX, GameFile.iLocY,
+						Direction.LEFT, Boundaries.getBoxes())) {
+					GameFile.iLocX = GameFile.iLocX + 8;
+				}
+				if(oldMan <=8){
+
+				}
+				else{ 
+					upStep = -1;
+					downStep = -1;
+					rightStep = -1;
+					leftStep = leftStep + 1;
+					lTimeL = nanoTime;
+				}
 			}
 			if (keyCode == e.VK_RIGHT && nanoTime - lTimeU > KEYDELAY
 					&& nanoTime - lTimeD > KEYDELAY) {// moves object right
-				if (GameFile.iLocX <= -368 && GameFile.iLocY <= 536
+
+				if (BoundaryBox.isMovePossible(GameFile.iLocX, GameFile.iLocY,
+						Direction.RIGHT, Boundaries.getBoxes())) {
+					GameFile.iLocX = GameFile.iLocX - 8;
+				}
+
+				if (forest ==1 && GameFile.iLocX <= -368 && GameFile.iLocY <= 536
 						&& GameFile.iLocY >= 424) {
 					//forest = 2;
 					//GameFile.iLocX = 0;
 					//GameFile.iLocY = 0;
-				} else {
-					GameFile.iLocX = GameFile.iLocX - 8;
+				} else if(oldMan <=8){
+
+				}
+				else {
 					upStep = -1;
 					leftStep = -1;
 					downStep = -1;
@@ -125,22 +157,43 @@ public class MiracleForest extends JFrame implements ActionListener {
 			}
 			if (keyCode == e.VK_UP && nanoTime - lTimeL > KEYDELAY
 					&& nanoTime - lTimeR > KEYDELAY) {// moves object up
-				GameFile.iLocY = GameFile.iLocY + 8;
-				leftStep = -1;
-				downStep = -1;
-				rightStep = -1;
-				upStep = upStep + 1;
-				lTimeU = nanoTime;
+
+				if (BoundaryBox.isMovePossible(GameFile.iLocX, GameFile.iLocY,
+						Direction.UP, Boundaries.getBoxes())) {
+					GameFile.iLocY = GameFile.iLocY + 8;
+
+					if(oldMan <=8){
+
+					}
+					else{
+						leftStep = -1;
+						downStep = -1;
+						rightStep = -1;
+						upStep = upStep + 1;
+						lTimeU = nanoTime;
+					}
+				}
 			}
 			if (keyCode == e.VK_DOWN && nanoTime - lTimeL > KEYDELAY
 					&& nanoTime - lTimeR > KEYDELAY) {// moves object down
-				GameFile.iLocY = GameFile.iLocY - 8;
-				upStep = -1;
-				leftStep = -1;
-				rightStep = -1;
-				downStep = downStep + 1;
-				lTimeD = nanoTime;
+
+				if (BoundaryBox.isMovePossible(GameFile.iLocX, GameFile.iLocY,
+						Direction.DOWN, Boundaries.getBoxes())) {
+					GameFile.iLocY = GameFile.iLocY - 8;
+				}
+
+				if(oldMan <=8){
+
+				}
+				else{
+					upStep = -1;
+					leftStep = -1;
+					rightStep = -1;
+					downStep = downStep + 1;
+					lTimeD = nanoTime;
+				}
 			}
+
 		}
 	}
 
@@ -178,6 +231,7 @@ public class MiracleForest extends JFrame implements ActionListener {
 					GameFile.iLocY - 1398, this);
 			g.drawImage(greenColumnTrees, GameFile.iLocX + 650,
 					GameFile.iLocY - 35, this);
+			g.drawImage(oldManDown, GameFile.iLocX + 300, GameFile.iLocY + 75, this);
 		} else if (mapChange == 6 && forest == 2) {
 			g.drawImage(miracleForest2, GameFile.iLocX + 220,
 					GameFile.iLocY - 482, this);
@@ -194,17 +248,25 @@ public class MiracleForest extends JFrame implements ActionListener {
 			g.drawImage(miracleForest5, GameFile.iLocX + 182,
 					GameFile.iLocY + 190, this);
 		}
+		else if (mapChange == 6 && forest == 6) {
+			g.drawImage(miracleForest6, GameFile.iLocX - 582,
+					GameFile.iLocY + 130, this);
+		}
+		else if (mapChange == 6 && forest == 7) {
+			g.drawImage(miracleForest7, GameFile.iLocX - 582,
+					GameFile.iLocY + 130, this);
+		}
 
-//		Robot derp;
-//		try {
-//			derp = new Robot();
-//			derp.keyPress(KeyEvent.VK_ALT);
-//			derp.keyPress(KeyEvent.VK_F4);
-//		} catch (AWTException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+		//		Robot derp;
+		//		try {
+		//			derp = new Robot();
+		//			derp.keyPress(KeyEvent.VK_ALT);
+		//			derp.keyPress(KeyEvent.VK_F4);
+		//		} catch (AWTException e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+
 		if (downStep >= 12) {
 			g.drawImage(down2, 300, 300, this);
 		} else if (downStep >= 6) {
@@ -213,14 +275,15 @@ public class MiracleForest extends JFrame implements ActionListener {
 			g.drawImage(down, 300, 300, this);
 		}
 
-		if (upStep >= 12) {
-			g.drawImage(up2, 300, 300, this);
-		} else if (upStep >= 6) {
-			g.drawImage(up1, 300, 300, this);
-		} else if (upStep >= 0) {
-			g.drawImage(up, 300, 300, this);
+		if(oldMan >=2 || oldMan ==0){
+			if (upStep >= 12) {
+				g.drawImage(up2, 300, 300, this);
+			} else if (upStep >= 6) {
+				g.drawImage(up1, 300, 300, this);
+			} else if (upStep >= 0) {
+				g.drawImage(up, 300, 300, this);
+			}
 		}
-
 		if (rightStep >= 12) {
 			g.drawImage(right2, 300, 300, this);
 		} else if (rightStep >= 6) {
@@ -279,6 +342,66 @@ public class MiracleForest extends JFrame implements ActionListener {
 			g.drawImage(horizontalLog, GameFile.iLocX + 1212, GameFile.iLocY + 1492,this);//3,4
 			g.drawImage(flashScreen, 0 ,0,this);
 		}
+		else if (mapChange ==6 && forest ==6){
+			g.drawImage(flashScreen, 0 ,0,this);
+		}
+
+		if(forest ==1 && oldMan == 0){
+			tmrOldMan.start();
+			if(boyY >= 230){
+				oldMan =1;
+			}
+		}
+		else if(forest ==1 && oldMan ==1){
+			g.drawImage(exclam, GameFile.iLocX + 295, GameFile.iLocY + 40, this);
+
+			if (GameFile.iLocY % 45 >= 30) {
+				g.drawImage(up2, 300, 300, this);
+			} else if (GameFile.iLocY % 45 >= 15) {
+				g.drawImage(up1, 300, 300, this);
+			} else if (GameFile.iLocY % 45 >= 0) {
+				g.drawImage(up, 300, 300, this);
+			}
+
+			if(GameFile.iLocY >= 196){
+				oldMan =2;
+			}
+		}
+		else if (oldMan ==2){
+			g.drawImage(dialog, 5, 500, this);
+			g.drawString("OldMan: Umm, Are you an actual human ", 20, 540);
+			g.drawString("being?  ... Stares and Touches You", 20, 580);
+		}
+		else if (oldMan ==3){
+			g.drawImage(dialog, 5, 500, this);
+			g.drawString("OldMan: Sorry, mind my manners. ", 20, 540);
+			g.drawString("Please Save Me Youngster!! ", 20, 580);
+		}
+		else if (oldMan ==4){
+			g.drawImage(dialog, 5, 500, this);
+			g.drawString("OldMan: I have been trapped in this ", 20, 540);
+			g.drawString("forest for 20 fricking years!!! ", 20, 580);
+		}
+		else if (oldMan ==5){
+			g.drawImage(dialog, 5, 500, this);
+			g.drawString("OldMan: Thank you for helping me. Get  ", 20, 540);
+			g.drawString("me out of the forest before I go crazy. ", 20, 580);
+		}
+		else if (oldMan ==6){
+			g.drawImage(dialog, 5, 500, this);
+			g.drawString("OldMan: But, beware that Miracle ", 20, 540);
+			g.drawString("Forest is a very tricky place to escape. ", 20, 580);
+		}
+		else if (oldMan ==7){
+			g.drawImage(dialog, 5, 500, this);
+			g.drawString("OldMan: Everytime, I try to escape,", 20, 540);
+			g.drawString("I always come back here. ", 20, 580);
+		}
+		else if (oldMan ==8){
+			g.drawImage(dialog, 5, 500, this);
+			g.drawString("OldMan: Also, some parts of the forest", 20, 540);
+			g.drawString("are very dark. Good Luck Youngster.", 20, 580);
+		}
 		g.drawString(GameFile.iLocX + "  " + GameFile.iLocY + "  " + mapChange
 				+ "  ", 250, 300);
 
@@ -294,4 +417,35 @@ public class MiracleForest extends JFrame implements ActionListener {
 		repaint();
 
 	}
+	enum Boundaries {
+
+		RightFenceLodge(new BoundaryBox(-304, -336, 44, 388));
+
+		BoundaryBox theBoundary;
+		static BoundaryBox[] theBoxes;
+
+		private Boundaries(BoundaryBox theBox) {
+			theBoundary = theBox;
+		}
+
+		public BoundaryBox getBox() {
+			return theBoundary;
+		}
+
+		public static void initializeBoundaries() {
+			Boundaries[] theBoundaries = Boundaries.values();
+
+			theBoxes = new BoundaryBox[theBoundaries.length];
+
+			for (int i = 0; i < theBoundaries.length; i++) {
+				theBoxes[i] = theBoundaries[i].getBox();
+			}
+		}
+
+		public static BoundaryBox[] getBoxes() {
+			return theBoxes;
+		}
+
+	}
+
 }

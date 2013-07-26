@@ -76,6 +76,8 @@ public enum Images implements ImgPathConstants {
 			"Pictures/Sprites/NPC/Gate/GateRight1.png"), GateRight2(
 			"Pictures/Sprites/NPC/Gate/GateRight2.png"), BoyDown(
 			"Pictures/Sprites/NPC/Boy/BoyDown.png"),
+			
+	OldManDown("Pictures/Sprites/NPC/OldMan/OldManDown.png"),
 
 	// NPC Effects
 	Exclamation("Pictures/Sprites/Misc/Exclamation.png"),
@@ -90,7 +92,9 @@ public enum Images implements ImgPathConstants {
 			MAPS_PATH + "/Route2.png"), MiracleForest4(
 			MAPS_PATH + "/MiracleForest4.png"), MiracleForest3(
 			MAPS_PATH + "/MiracleForest3.png"), MiracleForest5(
-			MAPS_PATH + "/MiracleForest5.png"),
+			MAPS_PATH + "/MiracleForest5.png"), MiracleForest6(
+			MAPS_PATH + "/MiracleForest6.png"), MiracleForest7(
+			MAPS_PATH + "/MiracleForest7.png"),
 
 
 	// Map decorations (the stuff you code on top of the map!)
