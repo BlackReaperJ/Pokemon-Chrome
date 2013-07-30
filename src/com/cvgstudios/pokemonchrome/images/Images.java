@@ -77,7 +77,7 @@ public enum Images implements ImgPathConstants {
 			"Pictures/Sprites/NPC/Gate/GateRight2.png"), BoyDown(
 			"Pictures/Sprites/NPC/Boy/BoyDown.png"),
 			
-	OldManDown("Pictures/Sprites/NPC/OldMan/OldManDown.png"),
+	OldManDown("Pictures/Sprites/NPC/OldMan/OldManDown.png"), FionaDown("Pictures/Sprites/NPC/Fiona/FionaDown.png"),
 
 	// NPC Effects
 	Exclamation("Pictures/Sprites/Misc/Exclamation.png"),
@@ -94,7 +94,8 @@ public enum Images implements ImgPathConstants {
 			MAPS_PATH + "/MiracleForest3.png"), MiracleForest5(
 			MAPS_PATH + "/MiracleForest5.png"), MiracleForest6(
 			MAPS_PATH + "/MiracleForest6.png"), MiracleForest7(
-			MAPS_PATH + "/MiracleForest7.png"),
+			MAPS_PATH + "/MiracleForest7.png"), MiracleForest8(
+			MAPS_PATH + "/MiracleForest8.png"),
 
 
 	// Map decorations (the stuff you code on top of the map!)
@@ -116,7 +117,8 @@ public enum Images implements ImgPathConstants {
 			"Pictures/Sprites/Structures/RightEntrance.png"), FlashScreen(
 			"Pictures/Sprites/Structures/FlashScreen.png"),	HorizontalLog(
 			"Pictures/Sprites/Structures/HorizontalLog.png"), VerticalLog(
-			"Pictures/Sprites/Structures/VerticalLog.png"),
+			"Pictures/Sprites/Structures/VerticalLog.png"), CutTree(
+			"Pictures/Sprites/Structures/CutTree.png"),
 
 	// GUI Things???
 	Arrow("Pictures/Sprites/Misc/Arrow.png"), Hand(
@@ -174,6 +176,12 @@ public enum Images implements ImgPathConstants {
 	Outline1(MENU_BATTLE_PATH + "/Outline1.png"), Outline2(MENU_BATTLE_PATH
 			+ "/Outline2.png"), Outline3(MENU_BATTLE_PATH + "/Outline3.png"), Outline4(
 			MENU_BATTLE_PATH + "/Outline4.png"),
+			
+	//Troll
+	FlowerDeath(("Pictures/Troll/Flowers.png")), PhotoFrame(("Pictures/Troll/PhotoFrame.png")),
+	Sakura(("Pictures/Troll/Sezbonsakura.gif")), Tombstone(("Pictures/Troll/Tombstone.png")),
+	Niko(("Pictures/Troll/Niko.png")), Arvin(("Pictures/Troll/Arvin.png")),
+	Gabriel(("Pictures/Troll/Gabriel.png")),Dixon(("Pictures/Troll/Dixon.png"))
 ;
 	private String filePath;
 	private Image image;
