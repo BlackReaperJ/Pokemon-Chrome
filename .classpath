@@ -5,5 +5,12 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="lib/imr-lib.jar"/>
 	<classpathentry kind="lib" path="lib/mp3plugin.jar"/>
+	<classpathentry kind="lib" path="lib/libgdx-0.9.8/gdx.jar" sourcepath="lib/libgdx-0.9.8/sources/gdx-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PokemonChrome/lib/libgdx-0.9.8/docs/api/index.html!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/libgdx-0.9.8/gdx-backend-lwjgl.jar"/>
+	<classpathentry kind="lib" path="lib/libgdx-0.9.8/gdx-backend-lwjgl-natives.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
