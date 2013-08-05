@@ -83,7 +83,6 @@ public class MainMenu extends JFrame implements ActionListener {
 			}
 			if (screenCount == 13) {
 				GameFile.saveFile();
-				Exitium.pleaseRenameTheseMethodsJulius();
 				mainMenu.setVisible(false);
 				break;
 			}
@@ -97,8 +96,6 @@ public class MainMenu extends JFrame implements ActionListener {
 					Exitium go = new Exitium();
 				} else if (GameFile.iLocation == 3) {
 					Route1 go = new Route1();
-				} else if (GameFile.iBattle >= 1) {
-					FriendsRivals.renameThisMethodJuliusUsingAltShiftR();
 				}
 				GameFile.loadFile();
 				mainMenu.setVisible(false);
@@ -422,14 +419,6 @@ public class MainMenu extends JFrame implements ActionListener {
 			// g2.drawString(""+y,0,y+20);
 			// }
 		}
-	}
-
-	public static void superMakeFightingTimeNow() throws Exception {
-		FriendsRivals.renameThisMethodJuliusUsingAltShiftR();
-		while (!FriendsRivals.battleDone) {
-			Thread.sleep(1000);
-		}
-		FriendsRivals.tearItDoooooooooooown();
 	}
 
 	public class AL extends KeyAdapter {

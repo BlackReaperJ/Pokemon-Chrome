@@ -118,7 +118,13 @@ public enum Images implements ImgPathConstants {
 			"Pictures/Sprites/Structures/FlashScreen.png"),	HorizontalLog(
 			"Pictures/Sprites/Structures/HorizontalLog.png"), VerticalLog(
 			"Pictures/Sprites/Structures/VerticalLog.png"), CutTree(
-			"Pictures/Sprites/Structures/CutTree.png"),
+			"Pictures/Sprites/Structures/CutTree.png"), Fountain1(
+			"Pictures/Sprites/Structures/Fountain1.png"),Fountain2(
+			"Pictures/Sprites/Structures/Fountain2.png"),Fountain3(
+			"Pictures/Sprites/Structures/Fountain3.png"),Fountain4(
+			"Pictures/Sprites/Structures/Fountain4.png"),FountainBase(
+			"Pictures/Sprites/Structures/FountainBase.png"),
+			
 
 	// GUI Things???
 	Arrow("Pictures/Sprites/Misc/Arrow.png"), Hand(
@@ -181,7 +187,8 @@ public enum Images implements ImgPathConstants {
 	FlowerDeath(("Pictures/Troll/Flowers.png")), PhotoFrame(("Pictures/Troll/PhotoFrame.png")),
 	Sakura(("Pictures/Troll/Sezbonsakura.gif")), Tombstone(("Pictures/Troll/Tombstone.png")),
 	Niko(("Pictures/Troll/Niko.png")), Arvin(("Pictures/Troll/Arvin.png")),
-	Gabriel(("Pictures/Troll/Gabriel.png")),Dixon(("Pictures/Troll/Dixon.png"))
+	Gabriel(("Pictures/Troll/Gabriel.png")),Dixon(("Pictures/Troll/Dixon.png")),
+	Tommy(("Pictures/Troll/Tommy.png"))
 ;
 	private String filePath;
 	private Image image;

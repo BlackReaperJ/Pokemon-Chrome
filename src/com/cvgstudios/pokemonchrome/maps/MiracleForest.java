@@ -42,7 +42,7 @@ public class MiracleForest extends JFrame implements ActionListener {
 	greenColumnTrees3, miracleForest2, miracleForest4, miracleForest3, miracleForest5, 
 	flashScreen, horizontalLog, verticalLog, miracleForest6, miracleForest7, oldManDown, 
 	dialog, exclam, cutTree, miracleForest8, fionaDown, sakura, flowersDeath, photoFrame, tombstone,
-	niko, gabriel, dixon, arvin;
+	niko, gabriel, dixon, arvin, tommy;
 	File f = new File("PokemonFont.ttf");
 	FileInputStream in = new FileInputStream(f);
 	Font dFont = Font.createFont(Font.TRUETYPE_FONT, in);
@@ -97,6 +97,7 @@ public class MiracleForest extends JFrame implements ActionListener {
 		dixon = Images.Dixon.getImage();
 		gabriel = Images.Gabriel.getImage();
 		niko = Images.Niko.getImage();
+		tommy = Images.Tommy.getImage();
 		
 		addKeyListener(new AL());
 		setTitle("Pokemon Chrome");// Sets the Title
@@ -617,8 +618,20 @@ public class MiracleForest extends JFrame implements ActionListener {
 			g.drawString("R.I.P", 300, 360);
 			g.drawString("Dixon D'Cunha", 220, 400);
 			g.drawString("1995 - 2013", 240, 440);
-			g.drawString("The First Ever Priest to .", 220, 480);
+			g.drawString("The First Ever Priest to", 220, 480);
 			g.drawString("Swear to God and burn in HELL", 220, 520);
+		}
+		else if(psyTalk ==6 && name.equals("Tommy")){
+			g.setColor(Color.RED);
+			g.drawImage(tombstone, 150, 280, this);
+			g.drawImage(tommy,230,70,this);
+			g.drawImage(photoFrame, 200, 30, this);
+			g.drawImage(flowersDeath, 172, 30, this);
+			g.drawString("R.I.P", 300, 360);
+			g.drawString("Tommy Huynh", 220, 400);
+			g.drawString("1995 - 2013", 240, 440);
+			g.drawString("Never Shall We See That", 180, 480);
+			g.drawString("Tentacle Hentai Porn Ever Again!", 180, 520);
 		}
 		else if(psyTalk ==6 && name.equals("Gabriel")){
 			g.setColor(Color.RED);
@@ -632,8 +645,20 @@ public class MiracleForest extends JFrame implements ActionListener {
 			g.drawString("Broke His Neck while .", 220, 480);
 			g.drawString("sky diving from the CN Tower..", 220, 520);
 		}
+		else if(psyTalk ==6 && name.equals("Mark")){
+			g.setColor(Color.RED);
+			g.drawImage(tombstone, 150, 280, this);
+			g.drawImage(gabriel,230,70,this);
+			g.drawImage(photoFrame, 200, 30, this);
+			g.drawImage(flowersDeath, 172, 30, this);
+			g.drawString("R.I.P", 300, 360);
+			g.drawString("Gabriel Marc", 220, 400);
+			g.drawString("1995 - 2013", 240, 440);
+			g.drawString("Broke His Neck while .", 220, 480);
+			g.drawString("sky diving from the CN Tower..", 220, 520);
+		}
 		//g.setColor(Color.RED);
-		//g.drawString(GameFile.iLocX + "  " + GameFile.iLocY + "  " + mapChange + "  ", 250, 300);
+		g.drawString(GameFile.iLocX + "  " + GameFile.iLocY + "  " + mapChange + "  ", 250, 300);
 
 		// Graphics2D g2 = (Graphics2D)g;
 		// for(int GameFile.iLocX=0;GameFile.iLocX<=6009GameFile.iLocX+=25){

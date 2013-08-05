@@ -19,6 +19,7 @@ import com.cvgstudios.pokemonchrome.battle.PokeExperience;
 import com.cvgstudios.pokemonchrome.battle.PokemonDmg;
 import com.cvgstudios.pokemonchrome.battle.PokemonStats;
 import com.cvgstudios.pokemonchrome.images.Images;
+import com.cvgstudios.pokemonchrome.maps.MapleLodge;
 import com.cvgstudios.pokemonchrome.music.BGMusicPlayer;
 
 public class FriendsRivals extends JFrame implements ActionListener {
@@ -78,35 +79,10 @@ public class FriendsRivals extends JFrame implements ActionListener {
 	CompAI compAi = new CompAI();
 	EnemyDmg enemyDmgs = new EnemyDmg();
 
-	public static boolean battleDone = false;
-	static FriendsRivals theBattleScreen;
-
 	public static void main(String[] args) throws Exception {
-		renameThisMethodJuliusUsingAltShiftR();
+		FriendsRivals friendsRivals = new FriendsRivals();
 	}
 
-	public static void renameThisMethodJuliusUsingAltShiftR() throws Exception {
-		theBattleScreen = new FriendsRivals();
-		//
-		// //I DONT KNOW WHAT IM DOING
-		// while (true){
-		// if(GameFile.iLocation ==2 && battle ==6){
-		// Exitium go = new Exitium();
-		// mainMenu.setVisible(false);
-		// GameFile.iaGameVars[3] = 13;
-		// GameFile.iaGameVars[4] = 1;
-		// break;
-		// }
-		// }
-		//
-
-	}
-
-	public static void tearItDoooooooooooown() {
-		theBattleScreen.setVisible(false);
-		theBattleScreen.removeAll();
-		theBattleScreen = null;
-	}
 
 	public FriendsRivals() throws Exception {// Constructor for FriendsRivals
 		cosmet = Images.Cosmet.getImage();

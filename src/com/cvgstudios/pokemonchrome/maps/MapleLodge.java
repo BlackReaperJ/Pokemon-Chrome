@@ -12,6 +12,7 @@ import javax.swing.Timer;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import com.cvgstudios.pokemonchrome.images.*;
 import com.cvgstudios.pokemonchrome.*;
 
@@ -34,7 +35,7 @@ public class MapleLodge extends JFrame implements ActionListener {
 	int[] party;
 	Image route1, down, down1, down2, left, left1, left2, right, right1,
 			right2, up, up1, up2, mapleLodge, columnTrees;
-	Image fountain1, fountain2, fountainBase, route2;
+	Image fountainBase, route2, fountain1, fountain2, fountain3, fountain4;
 
 	File f = new File("PokemonFont.ttf");
 	FileInputStream in = new FileInputStream(f);
@@ -63,9 +64,11 @@ public class MapleLodge extends JFrame implements ActionListener {
 		up2 = Images.PlayerUp2.getImage();
 		columnTrees = Images.ColumnTrees.getImage();
 		route1 = Images.Route1.getImage();
-		fountain1 = Images.NatalieHead.getImage();
-		fountain2 = Images.NatalieHead.getImage();
-		fountainBase = Images.Natalie.getImage();
+		fountain1 = Images.Fountain1.getImage();
+		fountain2 = Images.Fountain2.getImage();
+		fountain3 = Images.Fountain3.getImage();
+		fountain4 = Images.Fountain4.getImage();
+		fountainBase = Images.FountainBase.getImage();
 		
 		// route2 = Images.Route2.getImage();
 
@@ -185,8 +188,7 @@ public class MapleLodge extends JFrame implements ActionListener {
 					GameFile.iLocY - 714, this);
 			g.drawImage(columnTrees, GameFile.iLocX - 1203,
 					GameFile.iLocY - 497, this);
-			g.drawImage(fountainBase, GameFile.iLocX - 241,
-					GameFile.iLocY + 18, this);
+			g.drawImage(fountainBase, GameFile.iLocX - 268,GameFile.iLocY + 107, this);
 			g.drawImage(route2, GameFile.iLocX - 750, GameFile.iLocY - 1497,
 					this);
 		}
@@ -224,12 +226,20 @@ public class MapleLodge extends JFrame implements ActionListener {
 
 		if (mapChange == 4) {
 			tmrFountain.start();
-			if (fountainChange % 2 == 0) {
-				g.drawImage(fountain1, GameFile.iLocX - 230,
-						GameFile.iLocY - 30, this);
-			} else if (fountainChange % 2 == 1) {
-				g.drawImage(fountain2, GameFile.iLocX - 229,
-						GameFile.iLocY - 30, this);
+			if (fountainChange % 12 >= 9) {
+				g.drawImage(fountain4, GameFile.iLocX - 268,
+						GameFile.iLocY - 20, this);
+			} else if (fountainChange% 12 >= 6) {
+				g.drawImage(fountain3, GameFile.iLocX - 268,
+						GameFile.iLocY - 20, this);
+			}
+			else if (fountainChange % 12 >= 3) {
+				g.drawImage(fountain2, GameFile.iLocX - 268,
+						GameFile.iLocY - 20, this);
+			}
+			else if (fountainChange % 12 >= 0) {
+				g.drawImage(fountain1, GameFile.iLocX - 268,
+						GameFile.iLocY - 20, this);
 			}
 		}
 		g.drawString(
@@ -259,13 +269,14 @@ public class MapleLodge extends JFrame implements ActionListener {
 		RightFenceLodge(new BoundaryBox(0, -24, 40, 840)), LeftFenceLodge(
 				new BoundaryBox(984, 936, 1808, -152)), TopFenceLodge(
 				new BoundaryBox(0, 864, 792, 840)), BottomFenceLodge(
-				new BoundaryBox(-144, 976, -112, -152)),
+				new BoundaryBox(-144, 976, -112, -152)),Route1Fence(
+				new BoundaryBox(-8, -16, -112, -24)),LeftArmPokelab(
+				new BoundaryBox(664, 552, 576, 784)), CenterPokeLab(
+				new BoundaryBox(416, 552, 640, 648)),RightArmPokelab(
+				new BoundaryBox(296, 416, 576, 784)), 
 
-		LeftArmPokelab(new BoundaryBox(664, 552, 576, 784)),
-
-		RidgeTest(new BoundaryBox(632, 600, 1232, 848, Direction.LEFT)),
-
-		GrassTest(new BoundaryBox(-400, -512, -408, -328, 0.05f)),
+		//RidgeTest(new BoundaryBox(632, 600, 1232, 848, Direction.LEFT)),
+		//GrassTest(new BoundaryBox(-400, -512, -408, -328, 0.05f)),
 
 		;
 
