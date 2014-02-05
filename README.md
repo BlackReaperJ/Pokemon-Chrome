@@ -10,7 +10,6 @@ https://github.com/Exikle/ProjectChromeLibgdx
 
 Resources 
 -------
-Awesome O.S. Library [LIBGDX](http://libgdx.badlogicgames.com/)<br>
 Nidrax: [Maple Trees](http://nidrax.deviantart.com/art/Pokemon-BW-Maple-Tree-185324278)<br>
 XDinky: [Fountain] (http://xdinky.deviantart.com/art/Fountain-165862260)<br>
 LotusKing: [Pokemon Center] (http://lotusking.deviantart.com/art/Pokemon-Center-Sinnoh-298597216)<br>
