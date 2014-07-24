@@ -5,7 +5,7 @@ The source code for Pokemon Chrome, written in java.
 *SUSPENDED*
 
 Newer Version at 
-https://github.com/Exikle/ProjectChromeLibgdx
+https://github.com/Exikle/ProjectChrome
 
 
 Resources 
