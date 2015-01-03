@@ -32,7 +32,7 @@ public class MiracleForest extends JFrame implements ActionListener {
 	int mapChange = 6, forest = 1, oldMan = 0, boyY =0, velY =2, psyTalk =0;//remeber to switch old man to 0
 	private Image dbImage;//
 	private Graphics dbg;// double buffer
-	String name = "Dixon";
+	String name = "Tommy";
 	int downStep = -1, upStep = 0, leftStep = -1, rightStep = -1;
 	Timer tmrOldMan = new Timer(10, this);
 	int[] party;
